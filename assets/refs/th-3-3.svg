@@ -1,0 +1,15 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#FFFFFF"/>
+      <line x1="216" y1="0" x2="216" y2="400" stroke="#E5E5E5"/>
+      <line x1="428" y1="0" x2="428" y2="400" stroke="#E5E5E5"/>
+      <rect x="0" y="0" width="216" height="220" fill="#111111"/>
+      <text x="24" y="196" fill="#FFFFFF" font-family="Helvetica,Arial,sans-serif" font-size="82" font-weight="800">Aa</text>
+      <text x="240" y="72" fill="#111111" font-family="Helvetica,Arial,sans-serif" font-size="24" font-weight="800">Asymmetric Balance</text>
+      <text x="240" y="102" fill="#525252" font-family="sans-serif" font-size="13">不靠死板居中，靠字重反差、留白面积与基准线制造张力</text>
+      <line x1="240" y1="132" x2="604" y2="132" stroke="#111111" stroke-width="2"/>
+      <text x="240" y="168" fill="#111111" font-family="monospace" font-size="13">H1: 48px / -0.03em · Bold</text>
+      <text x="240" y="198" fill="#404040" font-family="monospace" font-size="13">H2: 24px / -0.02em · SemiBold</text>
+      <text x="240" y="228" fill="#525252" font-family="monospace" font-size="13">Body: 15px / 1.6 · Regular</text>
+      <rect x="24" y="256" width="168" height="108" fill="#D92B2B"/>
+      <text x="40" y="344" fill="#FFFFFF" font-family="monospace" font-size="12">MAX 2 TYPEFACES</text>
+    </svg>

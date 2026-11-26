@@ -1,0 +1,16 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#F8F7F4"/>
+      <text x="36" y="42" fill="#1C1917" font-family="monospace" font-size="13" font-weight="700">DON NORMAN · AFFORDANCE &amp; SIGNIFIER（诺曼门对照）</text>
+      <rect x="36" y="68" width="268" height="292" rx="8" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+      <text x="58" y="100" fill="#BE123C" font-family="monospace" font-size="13" font-weight="700">✕ BAD · 糟糕的“诺曼门”</text>
+      <rect x="106" y="122" width="128" height="176" rx="4" fill="#FFFFFF" stroke="#D6D3D1" stroke-width="2"/>
+      <rect x="196" y="184" width="14" height="52" rx="7" fill="#44403C"/>
+      <rect x="132" y="140" width="76" height="22" rx="3" fill="#E11D48"/>
+      <text x="170" y="155" fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">推 PUSH</text>
+      <text x="58" y="330" fill="#881337" font-family="sans-serif" font-size="12">把手暗示“拉”，却被迫贴纸写“推”</text>
+      <rect x="336" y="68" width="268" height="292" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+      <text x="358" y="100" fill="#047857" font-family="monospace" font-size="13" font-weight="700">✓ GOOD · 零说明书直觉意符</text>
+      <rect x="406" y="122" width="128" height="176" rx="4" fill="#FFFFFF" stroke="#D6D3D1" stroke-width="2"/>
+      <rect x="492" y="176" width="22" height="68" rx="3" fill="#059669" opacity="0.22" stroke="#059669" stroke-width="2"/>
+      <text x="358" y="330" fill="#065F46" font-family="sans-serif" font-size="12">平板只能推、把手只能拉——形态即指令</text>
+    </svg>

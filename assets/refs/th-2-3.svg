@@ -1,0 +1,16 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#121316"/>
+      <text x="36" y="42" fill="#9EA6F5" font-family="monospace" font-size="13" font-weight="700">NATURAL MAPPING · 四头灶自然映射（《设计心理学》经典图示）</text>
+      <rect x="36" y="72" width="268" height="286" rx="8" fill="#1C1D22" stroke="rgba(235,87,87,0.4)"/>
+      <text x="56" y="102" fill="#EB5757" font-family="monospace" font-size="12.5" font-weight="700">✕ 任意排列（必须靠标签死记）</text>
+      <circle cx="122" cy="158" r="24" fill="none" stroke="#8A8F98" stroke-width="2"/><circle cx="218" cy="158" r="24" fill="none" stroke="#8A8F98" stroke-width="2"/>
+      <circle cx="122" cy="226" r="24" fill="none" stroke="#8A8F98" stroke-width="2"/><circle cx="218" cy="226" r="24" fill="none" stroke="#8A8F98" stroke-width="2"/>
+      <g fill="#52525B"><circle cx="98" cy="296" r="12"/><circle cx="146" cy="296" r="12"/><circle cx="194" cy="296" r="12"/><circle cx="242" cy="296" r="12"/></g>
+      <text x="56" y="338" fill="#B4B8BF" font-family="sans-serif" font-size="12">一字排开 4 颗旋钮，永远搞不清控哪个炉头</text>
+      <rect x="336" y="72" width="268" height="286" rx="8" fill="#16211C" stroke="rgba(76,183,130,0.45)"/>
+      <text x="356" y="102" fill="#4CB782" font-family="monospace" font-size="12.5" font-weight="700">✓ 空间自然映射（一眼秒懂）</text>
+      <circle cx="422" cy="152" r="24" fill="none" stroke="#4CB782" stroke-width="2.2"/><circle cx="518" cy="166" r="24" fill="none" stroke="#4CB782" stroke-width="2.2"/>
+      <circle cx="422" cy="220" r="24" fill="none" stroke="#4CB782" stroke-width="2.2"/><circle cx="518" cy="234" r="24" fill="none" stroke="#4CB782" stroke-width="2.2"/>
+      <g fill="#4CB782"><circle cx="394" cy="304" r="11"/><circle cx="446" cy="284" r="11"/><circle cx="496" cy="304" r="11"/><circle cx="548" cy="284" r="11"/></g>
+      <text x="356" y="338" fill="#D1FAE5" font-family="sans-serif" font-size="12">控制件空间布局直接镜像被控对象位置</text>
+    </svg>

@@ -1,0 +1,15 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#F4F1EA"/>
+      <text x="36" y="38" fill="#111111" font-family="monospace" font-size="12.5" font-weight="700">MÜLLER-BROCKMANN · 12-COLUMN MODULAR GRID ANATOMY</text>
+      <g fill="rgba(217,43,43,0.11)" stroke="rgba(217,43,43,0.45)" stroke-width="1">
+        <rect x="44" y="60" width="124" height="86"/><rect x="184" y="60" width="124" height="86"/><rect x="324" y="60" width="124" height="86"/><rect x="464" y="60" width="132" height="86"/>
+        <rect x="44" y="162" width="124" height="86"/><rect x="184" y="162" width="124" height="86"/><rect x="324" y="162" width="124" height="86"/><rect x="464" y="162" width="132" height="86"/>
+        <rect x="44" y="264" width="124" height="86"/><rect x="184" y="264" width="124" height="86"/><rect x="324" y="264" width="124" height="86"/><rect x="464" y="264" width="132" height="86"/>
+      </g>
+      <rect x="44" y="60" width="264" height="86" fill="#111111"/>
+      <text x="60" y="114" fill="#F4F1EA" font-family="Helvetica,Arial,sans-serif" font-size="30" font-weight="800">GRID 1981</text>
+      <rect x="324" y="162" width="272" height="188" fill="#D92B2B"/>
+      <text x="342" y="204" fill="#FFFFFF" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700">Margins · Gutters · Modules</text>
+      <text x="342" y="232" fill="rgba(255,255,255,0.88)" font-family="monospace" font-size="11.5">16px Gutter · 4px Baseline · Ratio 1:2</text>
+      <text x="44" y="380" fill="#525252" font-family="monospace" font-size="11">现代 CSS Grid / 12 列响应栅格与 4px 间距系统的理论源头</text>
+    </svg>
