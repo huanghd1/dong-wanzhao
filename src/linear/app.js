@@ -8,13 +8,14 @@ import {
   DAILY_MODELS,
   CATEGORY_LABELS,
   buildSeedItems,
-} from "./data.js?v=11";
-import { ITEM_REFS } from "./references.js?v=11";
+} from "./data.js?v=13";
+import { ITEM_REFS } from "./references.js?v=13";
 import { enhanceModalDialog } from "../components/dialog-helpers.js";
 
 const STORAGE_KEY = "linear_design_vault_items_v1";
 const DAILY_REFS_CACHE_KEY = "linear_design_vault_daily_refs_v1";
 const AIWEB_SEED_VERSION_KEY = "linear_design_vault_aiweb_seed_v2";
+const AWARDS_3D_SEED_VERSION_KEY = "linear_design_vault_awards_3d_seed_v3";
 const IS_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 const MOD = IS_MAC ? "⌘" : "Ctrl";
 
@@ -65,6 +66,24 @@ function loadItems() {
           localStorage.setItem(AIWEB_SEED_VERSION_KEY, "1");
         }
         let metaChanged = false;
+        // One-time refresh of aw-1..10 & p3d-1..5 metadata to unified single-work editions while keeping user status/stars
+        if (localStorage.getItem(AWARDS_3D_SEED_VERSION_KEY) !== "1") {
+          for (const it of parsed) {
+            const s = seedById.get(it.id);
+            if (!s || (s.type !== "award" && s.type !== "product3d")) continue;
+            it.title = s.title;
+            it.domain = s.domain;
+            it.labels = s.labels;
+            it.essence = s.essence;
+            it.dna = s.dna;
+            it.notes = s.notes;
+            it.sourceUrl = s.sourceUrl;
+            it.category = s.category;
+            if (s.subKind) it.subKind = s.subKind;
+            metaChanged = true;
+          }
+          localStorage.setItem(AWARDS_3D_SEED_VERSION_KEY, "1");
+        }
         for (const it of parsed) {
           const s = seedById.get(it.id);
           if (!s) continue;
@@ -80,6 +99,7 @@ function loadItems() {
       }
     }
     localStorage.setItem(AIWEB_SEED_VERSION_KEY, "1");
+    localStorage.setItem(AWARDS_3D_SEED_VERSION_KEY, "1");
   } catch {}
   return seeds;
 }
