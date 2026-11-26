@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       quota:
-        description: "本次新增收录作品数量（1-16）"
+        description: "本次新增收录作品数量（默认 5 部：建筑/工业/美术/渲染/商品3D展板）"
         required: false
-        default: "8"
+        default: "5"
         type: string
 
 permissions:
@@ -40,7 +40,7 @@ jobs:
 
       - name: Run daily data update script
         env:
-          DAILY_QUOTA_INPUT: ${{ inputs.quota || '8' }}
+          DAILY_QUOTA_INPUT: ${{ inputs.quota || '5' }}
         run: python scripts/update-data.py --quota "$DAILY_QUOTA_INPUT"
 
       - name: Commit and push updated data

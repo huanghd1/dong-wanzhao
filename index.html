@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
-  <title>Design Vault · 01 Linear 精密工作台</title>
-  <meta name="description" content="以 01 · Linear 设计母本构建的键盘优先个人设计应用库工作台。">
+  <title>东东设计万物</title>
+  <meta name="description" content="东东设计万物：收录世界顶级设计大奖（建筑/工业/美术/渲染/空间）、商品 3D 展板与 AI 精选作品的精密暗黑灵感工作台。">
   <link rel="stylesheet" href="./design-vault/linear-01/tokens.css">
-  <link rel="stylesheet" href="./src/linear/linear.css?v=9">
+  <link rel="stylesheet" href="./src/linear/linear.css?v=11">
 </head>
 <body>
   <a class="skip-link" href="#item-list">跳至条目列表</a>
@@ -149,7 +149,9 @@
           <label class="field">
             <span>类型</span>
             <select name="type">
-              <option value="daily">每日 AI 精选</option>
+              <option value="award">世界设计大奖</option>
+              <option value="product3d">商品 3D 展板</option>
+              <option value="daily">每日精选</option>
               <option value="benchmark">设计母本</option>
               <option value="theory">经典理念与著作</option>
               <option value="aiweb">AI 网页与设计</option>
@@ -167,6 +169,12 @@
             <span>品类（自动归类）</span>
             <select name="category">
               <option value="">自动 / 不指定</option>
+              <option value="architecture">建筑</option>
+              <option value="industrial">工业设计</option>
+              <option value="art">美术</option>
+              <option value="render">3D 渲染</option>
+              <option value="spatial">空间 / 交互</option>
+              <option value="product3d">商品 3D 展板</option>
               <option value="web">网页</option>
               <option value="game">游戏</option>
               <option value="design">设计</option>
@@ -232,6 +240,6 @@
     <button type="button" class="toast-undo" id="toast-undo">撤销 <kbd class="kbd">⌘Z</kbd></button>
   </div>
 
-  <script type="module" src="./src/linear/app.js?v=10"></script>
+  <script type="module" src="./src/linear/app.js?v=11"></script>
 </body>
 </html>

@@ -1626,4 +1626,298 @@ export const ITEM_REFS = {
       caption: "假门碰撞即时亮出红色 X 标识与物理弹反，制造经典派对综艺笑点。",
     },
   ],
+  "aw-1": [
+    {
+      title: "盖达尔·阿利耶夫中心 · 暮色流线白壳全景",
+      tag: "建筑实景",
+      src: "./assets/refs/aw-1-3.jpg",
+      caption: "Zaha Hadid 标志性 GFRC 参数化双曲面外壳在夜幕灯光下展现极致的流动张力与雕塑轮廓。",
+    },
+    {
+      title: "无柱纯白折叠中庭与悬挑阶梯",
+      tag: "室内空间",
+      src: "./assets/refs/aw-1-1.jpg",
+      caption: "彻底消解柱网与直角的连续室内白曲面，阶梯与观景斜坡自然成为空间几何本身。",
+    },
+    {
+      title: "曲线休憩展廊与穹顶柔光灯具",
+      tag: "空间细部",
+      src: "./assets/refs/aw-1-2.jpg",
+      caption: "曲面长椅与半球漫射吊灯呼应建筑整体流线语言，消解大型公共文化建筑的冰冷尺度。",
+    },
+  ],
+  "aw-2": [
+    {
+      title: "卢浮宫阿布扎比 · 180 米星纹穹顶光雨中庭",
+      tag: "建筑实景",
+      src: "./assets/refs/aw-2-1.jpg",
+      caption: "8 层错位几何星形网壳将沙漠强光过滤为流动光斑，洒落在纯白展馆立方体与石材广场上。",
+    },
+    {
+      title: "海上博物馆之城 · 穹顶与潮汐水景",
+      tag: "光影水景",
+      src: "./assets/refs/aw-2-2.jpg",
+      caption: "极简白色展厅漂浮于海水之上，穹顶遮阳与水面蒸发形成天然被动微气候降温系统。",
+    },
+    {
+      title: "星纹穹顶廊道 · Rain of Light 纵深透视",
+      tag: "光雨细部",
+      src: "./assets/refs/aw-2-3.jpg",
+      caption: "上方极度复杂的星纹网壳与下方极度克制的白墙直线形成强烈的建筑秩序反差。",
+    },
+  ],
+  "aw-3": [
+    {
+      title: "Herman Miller Aeron · 经典悬浮网膜侧视",
+      tag: "工业经典",
+      src: "./assets/refs/aw-3-1.jpg",
+      caption: "以 Pellicle 悬浮编织网膜彻底废除海绵泡棉，开创透明、透气、诚实结构的现代工学椅纪元。",
+    },
+    {
+      title: "工作场景实拍 · 裸露压铸铝结构与倾仰底盘",
+      tag: "工业结构",
+      src: "./assets/refs/aw-3-2.jpg",
+      caption: "Kinemat 同步倾仰机械组件与五爪底座毫不遮掩，功能工程逻辑即视觉美学本体。",
+    },
+    {
+      title: "伦敦 V&A 博物馆馆藏 · 浅灰工程原型",
+      tag: "博物馆馆藏",
+      src: "./assets/refs/aw-3-3.jpg",
+      caption: "从人体坐姿压力分布长出的工业轮廓，入选 MoMA 与 V&A 永久设计馆藏。",
+    },
+  ],
+  "aw-4": [
+    {
+      title: "Leica M11 × Summicron-M 50mm f/2 · 极简黑机",
+      tag: "工业实拍",
+      src: "./assets/refs/aw-4-1.jpg",
+      caption: "CNC 整块切削顶盖配极简物理快门拨盘与 ISO 转盘，以极端克制的减法定义光学工业标杆。",
+    },
+    {
+      title: "Leica M6 · 黄铜机械质感与经典红点比例",
+      tag: "经典工业",
+      src: "./assets/refs/aw-4-2.jpg",
+      caption: "荔枝纹蒙皮与哑光黑漆金属形成冷暖触感对比，光圈与景深标尺采用高对比雕刻填漆字符。",
+    },
+    {
+      title: "正面正交构图 · 椭圆机身与取景器几何节奏",
+      tag: "正交细节",
+      src: "./assets/refs/aw-4-3.jpg",
+      caption: "正面仅保留取景窗、测距窗、自拍杆与红点徽标，70 年家族设计语言高度统一。",
+    },
+  ],
+  "aw-5": [
+    {
+      title: "teamLab Borderless · 实时粒子花兽巡游",
+      tag: "数字美术",
+      src: "./assets/refs/aw-5-1.jpg",
+      caption: "全暗场吸光空间中高饱和繁花粒子实时生成并随观者路径在展厅之间自由迁徙。",
+    },
+    {
+      title: "无界巨浪空间 · 地面与墙面全向投影融合",
+      tag: "沉浸交互",
+      src: "./assets/refs/aw-5-2.jpg",
+      caption: "观者剪影直接融入流体力学模拟的浮世绘海浪，打破传统画框与建筑边界。",
+    },
+    {
+      title: "繁花光影矩阵 · 镜面无限延展视效",
+      tag: "空间美术",
+      src: "./assets/refs/aw-5-3.jpg",
+      caption: "镜面地板与墙体消解空间转角，算法花海随季节与人体触碰持续盛开凋谢永不重复。",
+    },
+  ],
+  "aw-6": [
+    {
+      title: "Anish Kapoor《Cloud Gate》· 液态汞双曲城市反射",
+      tag: "公共雕塑",
+      src: "./assets/refs/aw-6-1.jpg",
+      caption: "168 块无缝抛光不锈钢板实时折映整座芝加哥城市天际线，随晴雨云层生成活态画作。",
+    },
+    {
+      title: "脐眼拱顶（Omphalos）· 无限漩涡倒影",
+      tag: "交互仰拍",
+      src: "./assets/refs/aw-6-3.jpg",
+      caption: "走入 3.7 米高底部拱洞抬头仰望，凹面镜形成超现实的多重环形人群镜像漩涡。",
+    },
+  ],
+  "aw-7": [
+    {
+      title: "《Cosmos Laundromat》· SIGGRAPH Best in Show 宽银幕渲染",
+      tag: "SIGGRAPH 冠军",
+      src: "./assets/refs/aw-7-1.jpg",
+      caption: "Blender Cycles 物理路径追踪呈现滚筒不锈钢反射、体积冷暖光比与超现实工业质感。",
+    },
+    {
+      title: "《Cosmos Laundromat》官方主视觉 · 体积烟雾与色彩叙事",
+      tag: "官方视觉",
+      src: "./assets/refs/aw-7-2.jpg",
+      caption: "高动态范围 Filmic 色调映射下的绚丽体积云涡与极暗大地剪影对比。",
+    },
+    {
+      title: "《Charge》· SIGGRAPH 2023 硬表面与次表面散射渲染",
+      tag: "SIGGRAPH 2023",
+      src: "./assets/refs/aw-7-3.jpg",
+      caption: "展示 Blender 写实人物皮肤 SSS、潮湿工业废土与冷青/橙红双色电影布光水准。",
+    },
+  ],
+  "aw-8": [
+    {
+      title: "《Littlest Tokyo》· Sketchfab 全球最高赞微缩 PBR 渲染",
+      tag: "3D 渲染巅峰",
+      src: "./assets/refs/aw-8-1.jpg",
+      caption: "Glen Fox 打造的微缩东京街区（8,890+ 赞），以手绘风格化材质、烘焙 GI 与循环电车封神。",
+    },
+    {
+      title: "《Abandoned Warehouse》· WebGL 照片级室内光影烘焙",
+      tag: "写实光照",
+      src: "./assets/refs/aw-8-2.jpg",
+      caption: "破窗体积光柱、工业桁架与真实混凝土粗糙度贴图在浏览器实时 60fps 流畅运行。",
+    },
+    {
+      title: "《Sea Keep》· 风格化体块与大气散射 3D 场景",
+      tag: "风格化 3D",
+      src: "./assets/refs/aw-8-3.jpg",
+      caption: "极简低面数几何配合精准光照色彩层次，展示实时 3D 场景叙事与构图张力。",
+    },
+  ],
+  "aw-9": [
+    {
+      title: "赫尔辛基 Oodi 中央图书馆 · 钢拱悬挑云杉木浪立面",
+      tag: "IFLA 冠军",
+      src: "./assets/refs/aw-9-1.jpg",
+      caption: "百米钢拱结构托起起伏木质曲面，下方形成宽阔无柱的市民入口雨棚与通透玻璃幕墙。",
+    },
+    {
+      title: "日间全立面 · 北欧暖木与城市广场对话",
+      tag: "建筑全景",
+      src: "./assets/refs/aw-9-2.jpg",
+      caption: "预制芬兰云杉弧面与三层全景「书之天堂」阅览玻璃盒形成清晰的功能体块读解。",
+    },
+    {
+      title: "冬夜暖光 · 透明市民客厅的公共灯光叙事",
+      tag: "夜景灯光",
+      src: "./assets/refs/aw-9-3.jpg",
+      caption: "高纬度极夜中整栋建筑化作温暖的灯笼，三层活动分区隔着玻璃一目了然。",
+    },
+  ],
+  "aw-10": [
+    {
+      title: "新加坡星耀樟宜 · 40 米室内雨漩涡全景",
+      tag: "空间地标",
+      src: "./assets/refs/aw-10-1.jpg",
+      caption: "9,000+ 块三角形钢玻璃穹顶汇聚天然雨水形成世界最高室内瀑布，成为 7 层中庭超级视觉锚点。",
+    },
+    {
+      title: "立体热带雨林梯田步道与中庭层级",
+      tag: "展陈动线",
+      src: "./assets/refs/aw-10-2.jpg",
+      caption: "层层退台式绿化步道与商业店面自然穿插，观者步行即可全方位观赏中心瀑布。",
+    },
+    {
+      title: "高架轻轨穿行瀑布穹顶 · 动态空间镜头",
+      tag: "动态叙事",
+      src: "./assets/refs/aw-10-3.jpg",
+      caption: "机场捷运列车从热带峡谷与雨漩涡侧翼缓缓驶过，赋予建筑持续流动的科幻仪式感。",
+    },
+  ],
+  "p3d-1": [
+    {
+      title: "Apple iPhone 16 Pro Max · 暗棚 3D 钛金属展板",
+      tag: "3D 交互展板",
+      src: "./assets/refs/p3d-1-1.jpg",
+      caption: "Sketchfab 360° 可交互 3D 模型：哑光原色钛金属背板配窄条轮廓光与三摄镜片折射。",
+    },
+    {
+      title: "iPhone 15 Pro Max 暗黑钛金属 · 正面微边与灵动岛",
+      tag: "3D 交互展板",
+      src: "./assets/refs/p3d-1-2.jpg",
+      caption: "高对比深空棚拍打光，精准表现极窄等宽边框、金属弧面过渡与微距屏幕玻璃反射。",
+    },
+    {
+      title: "自然钛金属三摄模组 · 真实材质与倒角对照",
+      tag: "材质对照",
+      src: "./assets/refs/p3d-1-3.jpg",
+      caption: "用于校准 3D 展板 PBR 参数的实机自然钛金属拉丝中框与磨砂玻璃纹理参考。",
+    },
+  ],
+  "p3d-2": [
+    {
+      title: "Porsche 911 GT3 · 工作室白棚 3D 跑车展板",
+      tag: "3D 交互展板",
+      src: "./assets/refs/p3d-2-1.jpg",
+      caption: "鹅颈式后扰流翼、双层清漆高光反射与轻量化中心锁止轮毂，支持 360° 交互查看。",
+    },
+    {
+      title: "Porsche 911 (930) Turbo · 暗棚 7,300+ 赞汽车 3D 标杆",
+      tag: "3D 暗棚打光",
+      src: "./assets/refs/p3d-2-2.jpg",
+      caption: "经典 85mm 侧视长焦视角配顶部连续柔光带，完美勾勒保时捷溜背腰线与宽体翼子板。",
+    },
+    {
+      title: "911 GT3 实车展厅 · 车漆清漆与碳陶刹车对照",
+      tag: "实车对照",
+      src: "./assets/refs/p3d-2-3.jpg",
+      caption: "展厅实拍高饱和鲨鱼蓝车漆与轮毂刹车卡钳光影，用于校准汽车 3D 展板 Clearcoat 质感。",
+    },
+  ],
+  "p3d-3": [
+    {
+      title: "CORMAK 数控车床 · 精密工业机床 3D 整机展板",
+      tag: "3D 工业机床",
+      src: "./assets/refs/p3d-3-1.jpg",
+      caption: "Sketchfab 3D 整机模型：冰川灰白工业烤漆钣金、深灰铸铁床身、防护移门与悬臂 CNC 控制面板。",
+    },
+    {
+      title: "DeckelMaho DMU 50e · 五轴联动数控加工中心",
+      tag: "五轴机床实机",
+      src: "./assets/refs/p3d-3-2.jpg",
+      caption: "德系五轴 CNC 加工中心实机结构：高刚性立柱、防爆切削视窗与人体工学倾斜操控台。",
+    },
+    {
+      title: "工业 CNC 数控系统操作面板 · 3D 细节特写",
+      tag: "3D 控制台",
+      src: "./assets/refs/p3d-3-3.jpg",
+      caption: "独立建模的工业数控键盘矩阵、高对比坐标显示屏、安全急停蘑菇头与手轮脉冲编码器。",
+    },
+  ],
+  "p3d-4": [
+    {
+      title: "KUMA Heavy Robot R-9000S · 六轴机械臂 3D 展板",
+      tag: "3D 工业装备",
+      src: "./assets/refs/p3d-4-1.jpg",
+      caption: "Sketchfab 1,986 赞硬表面标杆：六自由度关节法兰、伺服外壳、柔性电缆与冷白/橙工业涂装。",
+    },
+    {
+      title: "Black Honey 工业机械臂 · 高饱和无缝棚 3D 展板",
+      tag: "3D 视觉展板",
+      src: "./assets/refs/p3d-4-2.jpg",
+      caption: "1,198 赞工业机械臂 3D 渲染：纯橙色无缝背景极致凸显机械轮廓剪影与关节比例。",
+    },
+    {
+      title: "CNC 加工中心 × 工业机械臂自动化产线实机",
+      tag: "产线对照",
+      src: "./assets/refs/p3d-4-3.jpg",
+      caption: "真实工厂中数控铣床与自动上下料机械臂联动布局，提供工业场景比例与材质参照。",
+    },
+  ],
+  "p3d-5": [
+    {
+      title: "Roger Dubuis 锻造碳镂空机械腕表 · 3D 暗棚展板",
+      tag: "3D 精密腕表",
+      src: "./assets/refs/p3d-5-1.jpg",
+      caption: "Sketchfab 360° 交互 3D 模型：多层级镂空机芯、撞色刻度环与暗场金属锐利倒角高光。",
+    },
+    {
+      title: "Greubel Forsey 24 秒倾斜陀飞轮 · 微距机芯工艺",
+      tag: "微距机芯",
+      src: "./assets/refs/p3d-5-2.jpg",
+      caption: "展示蓝宝石表镜通透折射、玫瑰金表壳、手工倒角桥板与精密陀飞轮框架景深。",
+    },
+    {
+      title: "共振行星陀飞轮腕表 · 机械齿轮咬合纵深",
+      tag: "结构细节",
+      src: "./assets/refs/p3d-5-3.jpg",
+      caption: "四层镂空机械景深与微尺度拉丝精饰，为高端腕表 3D 展板提供微距布光与 PBR 参考。",
+    },
+  ],
 };

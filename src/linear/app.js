@@ -1,5 +1,15 @@
-import { STATUSES, PRIORITIES, VIEWS, DAILY_CATEGORIES, DAILY_MODELS, CATEGORY_LABELS, buildSeedItems } from "./data.js?v=7";
-import { ITEM_REFS } from "./references.js?v=7";
+import {
+  STATUSES,
+  PRIORITIES,
+  VIEWS,
+  DAILY_CATEGORIES,
+  AWARD_CATEGORIES,
+  PRODUCT3D_CATEGORIES,
+  DAILY_MODELS,
+  CATEGORY_LABELS,
+  buildSeedItems,
+} from "./data.js?v=11";
+import { ITEM_REFS } from "./references.js?v=11";
 import { enhanceModalDialog } from "../components/dialog-helpers.js";
 
 const STORAGE_KEY = "linear_design_vault_items_v1";
@@ -27,8 +37,8 @@ const state = {
   subModel: "all",
   dailyMeta: {
     lastUpdatedAt: null,
-    dailyQuota: 16,
-    lastRunSummary: "每日 09:00 自动更新 16 部（涵盖设计 / 游戏 / 网页 / 产品 / App，并自动归入对应分类与模型列表）",
+    dailyQuota: 5,
+    lastRunSummary: "每日 09:00 自动更新 5 部（涵盖世界设计大奖：建筑/工业/美术/渲染 与 商品 3D 展板，并自动归入对应专题）",
   },
   filter: "",
   selectedId: null,
@@ -114,11 +124,24 @@ function openDialog() {
 }
 
 // ---------------- Auto-routing & Model/Category helpers ----------------
+const AWARD_CAT_SET = new Set(["architecture", "industrial", "art", "render", "spatial"]);
+
+function inferProduct3dKind(it) {
+  if (it.subKind) return it.subKind;
+  const blob = `${it.title || ""} ${it.domain || ""} ${(it.labels || []).join(" ")}`.toLowerCase();
+  if (/iphone|phone|mobile|手机|ipad|macbook|耳机|airpods/.test(blob)) return "phone";
+  if (/porsche|car|ferrari|bmw|tesla|vehicle|auto|汽车|跑车|超跑/.test(blob)) return "car";
+  if (/cnc|lathe|milling|machining|机床|数控|铣床|车床/.test(blob)) return "cnc";
+  if (/robot|arm|机械臂|工业装备|turbine|engine/.test(blob)) return "robot";
+  if (/watch|tourbillon|clock|camera|leica|腕表|陀飞轮|相机/.test(blob)) return "watch";
+  return "other";
+}
+
 function inferModelFamily(it) {
   if (it.modelFamily === "claude" || it.modelFamily === "other") return it.modelFamily;
   if (it.type === "fable") return "claude";
   if (it.type === "othermodel") return "other";
-  if (it.type === "benchmark" || it.type === "theory") return "";
+  if (["benchmark", "theory", "award", "product3d"].includes(it.type)) return "";
   const blob = `${it.modelName || ""} ${(it.labels || []).join(" ")} ${it.title || ""}`;
   return /claude|fable|opus|sonnet/i.test(blob) ? "claude" : "other";
 }
@@ -128,7 +151,7 @@ function matchesModelFilter(it, filterId) {
   const fam = inferModelFamily(it);
   if (filterId === "claude") return fam === "claude";
   if (filterId === "fable52") return /fable\s*5\.2/i.test(it.modelName || "");
-  if (filterId === "other") return fam === "other";
+  if (filterId === "other") return fam !== "claude";
   return true;
 }
 
@@ -138,6 +161,10 @@ function matchesView(it, viewId) {
       return true;
     case "daily":
       return it.type === "daily";
+    case "awards":
+      return it.type === "award" || (it.type === "daily" && AWARD_CAT_SET.has(it.category));
+    case "product3d":
+      return it.type === "product3d" || (it.type === "daily" && it.category === "product3d");
     case "benchmark":
       return it.type === "benchmark";
     case "theory":
@@ -151,7 +178,7 @@ function matchesView(it, viewId) {
     case "fable":
       return it.type === "fable" || (it.type === "daily" && inferModelFamily(it) === "claude");
     case "othermodel":
-      return it.type === "othermodel" || (it.type === "daily" && inferModelFamily(it) === "other");
+      return it.type === "othermodel" || (it.type === "daily" && !AWARD_CAT_SET.has(it.category) && it.category !== "product3d" && inferModelFamily(it) === "other");
     case "starred":
       return Boolean(it.starred);
     default:
@@ -165,12 +192,28 @@ function getRoutedViews(it) {
 
 function rowChips(it) {
   const chips = [];
+  const catColors = {
+    architecture: "#4ea7fc",
+    industrial: "#e2b04a",
+    art: "#f06aa8",
+    render: "#b18cf2",
+    spatial: "#4cb782",
+    product3d: "#5e6ad2",
+    game: "#eb5757",
+    app: "#4cb782",
+    product: "#e2b04a",
+    design: "#b18cf2",
+    web: "#4ea7fc",
+  };
   if (it.category && CATEGORY_LABELS[it.category]) {
-    chips.push({ text: CATEGORY_LABELS[it.category], dot: it.category === "game" ? "#eb5757" : it.category === "app" ? "#4cb782" : it.category === "product" ? "#e2b04a" : it.category === "design" ? "#b18cf2" : "#4ea7fc" });
+    chips.push({ text: CATEGORY_LABELS[it.category], dot: catColors[it.category] || "#4ea7fc" });
   }
   if (it.modelName) {
     const fam = inferModelFamily(it);
     chips.push({ text: it.modelName, dot: fam === "claude" ? "#e29b4a" : "#4ea7fc" });
+  } else if (it.labels?.length && (it.type === "award" || it.type === "product3d")) {
+    const extra = it.labels.find((l) => l !== CATEGORY_LABELS[it.category]);
+    if (extra) chips.push({ text: extra, dot: labelColor(extra) });
   }
   if (chips.length) return chips.slice(0, 2);
   return (it.labels || []).slice(0, 2).map((l) => ({ text: l, dot: labelColor(l) }));
@@ -245,8 +288,11 @@ function computeVisible() {
   const q = state.filter.trim().toLowerCase();
   const list = state.items.filter((it) => {
     if (!matchesView(it, state.view)) return false;
-    if (["daily", "fable", "othermodel"].includes(state.view) && state.subCategory !== "all") {
+    if (["daily", "awards", "fable", "othermodel"].includes(state.view) && state.subCategory !== "all") {
       if (it.category !== state.subCategory) return false;
+    }
+    if (state.view === "product3d" && state.subCategory !== "all") {
+      if (inferProduct3dKind(it) !== state.subCategory) return false;
     }
     if (["daily", "aiweb", "games", "products", "fable"].includes(state.view) && state.subModel !== "all") {
       if (!matchesModelFilter(it, state.subModel)) return false;
@@ -318,20 +364,20 @@ function renderNav() {
   const view = VIEWS.find((v) => v.id === state.view);
   $("view-title").textContent = view.label;
   $("view-count").textContent = String(state.visible.length);
-  document.title = `${view.label} · Design Vault · 01 Linear`;
+  document.title = state.view === "all" ? "东东设计万物" : `${view.label} · 东东设计万物`;
 }
 
 function renderDailyBar() {
   const bar = $("daily-bar");
   if (!bar) return;
-  const subBarViews = ["daily", "aiweb", "games", "products", "fable", "othermodel"];
+  const subBarViews = ["daily", "awards", "product3d", "aiweb", "games", "products", "fable", "othermodel"];
   if (!subBarViews.includes(state.view)) {
     bar.hidden = true;
     return;
   }
   bar.hidden = false;
   const viewPool = state.items.filter((i) => matchesView(i, state.view));
-  const showCats = ["daily", "fable", "othermodel"].includes(state.view);
+  const showCats = ["daily", "awards", "product3d", "fable", "othermodel"].includes(state.view);
   const showModels = ["daily", "aiweb", "games", "products", "fable"].includes(state.view);
 
   const modelChoices =
@@ -342,15 +388,27 @@ function renderDailyBar() {
         ]
       : DAILY_MODELS;
 
+  const catSource =
+    state.view === "awards"
+      ? AWARD_CATEGORIES
+      : state.view === "product3d"
+      ? PRODUCT3D_CATEGORIES
+      : DAILY_CATEGORIES;
+
   const catHtml = showCats
     ? `<div class="daily-cats" role="group" aria-label="按品类筛选">
-        ${DAILY_CATEGORIES.map((c) => {
-          const n =
-            c.id === "all"
-              ? viewPool.filter((i) => matchesModelFilter(i, state.subModel)).length
-              : viewPool.filter((i) => i.category === c.id && matchesModelFilter(i, state.subModel)).length;
-          return `<button type="button" class="cat-pill" data-daily-cat="${c.id}" aria-pressed="${state.subCategory === c.id}">${esc(c.label)} <span class="cat-pill-n">${n}</span></button>`;
-        }).join("")}
+        ${catSource
+          .map((c) => {
+            const n =
+              c.id === "all"
+                ? viewPool.filter((i) => (!showModels || matchesModelFilter(i, state.subModel))).length
+                : state.view === "product3d"
+                ? viewPool.filter((i) => inferProduct3dKind(i) === c.id).length
+                : viewPool.filter((i) => i.category === c.id && (!showModels || matchesModelFilter(i, state.subModel))).length;
+            if (state.view === "daily" && c.id !== "all" && n === 0) return "";
+            return `<button type="button" class="cat-pill" data-daily-cat="${c.id}" aria-pressed="${state.subCategory === c.id}">${esc(c.label)} <span class="cat-pill-n">${n}</span></button>`;
+          })
+          .join("")}
       </div>`
     : "";
 
@@ -368,15 +426,25 @@ function renderDailyBar() {
   const stamp = state.dailyMeta.lastUpdatedAt
     ? state.dailyMeta.lastUpdatedAt.replace("T", " ").slice(0, 16)
     : "待首次执行";
-  const quota = state.dailyMeta.dailyQuota || 16;
+  const quota = state.dailyMeta.dailyQuota || 5;
   const dailyRoutedCount = viewPool.filter((i) => i.type === "daily").length;
 
   const rightMeta =
     state.view === "daily"
       ? `<div class="daily-meta">
           <span class="daily-dot" aria-hidden="true"></span>
-          <span>已存网页 · 每日 09:00 更新 ${quota} 部（自动归类）· 上次：${esc(stamp)}</span>
+          <span>每日 09:00 自动更新 ${quota} 部（世界设计大奖 &amp; 商品 3D 展板）· 上次：${esc(stamp)}</span>
           <button type="button" class="ghost-btn" data-action="refresh-daily">刷新列表</button>
+        </div>`
+      : state.view === "awards"
+      ? `<div class="daily-meta">
+          <span class="daily-dot" aria-hidden="true"></span>
+          <span>收录 10 部世界顶级大奖标杆 + 每日自动同步新作品（已同步 ${dailyRoutedCount} 部）</span>
+        </div>`
+      : state.view === "product3d"
+      ? `<div class="daily-meta">
+          <span class="daily-dot" aria-hidden="true"></span>
+          <span>收录 5 部标杆商品 3D 展板 + 每日自动同步（已同步 ${dailyRoutedCount} 部）</span>
         </div>`
       : `<div class="daily-meta">
           <span class="daily-dot" aria-hidden="true"></span>
@@ -458,10 +526,14 @@ function renderInspector() {
   const p = priorityById(it.priority);
 
   const typeLabel =
-    it.type === "benchmark"
+    it.type === "award"
+      ? "世界设计大奖"
+      : it.type === "product3d"
+      ? "商品 3D 展板"
+      : it.type === "benchmark"
       ? "设计母本"
       : it.type === "daily"
-      ? "每日 AI 精选"
+      ? "每日精选"
       : it.type === "theory"
       ? "经典理念"
       : it.type === "aiweb"
@@ -609,7 +681,11 @@ function toggleStar(id) {
 
 function createItem({ title, type, status, domain, essence, category, modelName }) {
   const prefix =
-    type === "fable"
+    type === "award"
+      ? "AW"
+      : type === "product3d"
+      ? "P3D"
+      : type === "fable"
       ? "FB"
       : type === "othermodel"
       ? "OM"
@@ -913,7 +989,7 @@ const SHORTCUTS = [
   ["聚焦筛选", ["/"]],
   ["加星 / 取消", ["S"]],
   ["设置状态（待研究 → 已归档）", ["1", "–", "5"]],
-  ["前往全部 / 每日精选 / 母本 / 理念 / 网页设计 / 游戏 / 产品App / Claude / 其他模型 / 加星", ["G", "A·D·B·T·W·G·P·F·M·S"]],
+  ["前往全部 / 每日精选 / 世界大奖 / 3D 展板 / 母本 / 理念 / 网页 / 游戏 / 产品 / Claude / 其他 / 加星", ["G", "A·D·R·3·B·T·W·G·P·F·M·S"]],
   ["撤销", [MOD, "Z"]],
   ["快捷键速查", ["?"]],
 ];

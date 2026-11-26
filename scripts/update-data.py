@@ -1,339 +1,386 @@
 #!/usr/bin/env python3
 """
-Autonomous Daily Data Updater for Design Vault (GitHub Actions & Local).
+Autonomous Daily Updater for 东东设计万物 (Design Vault) — GitHub Actions & Local.
 
-Fetches fresh AI web/design/game/product/app works from public upstream feeds,
-selects a balanced batch across categories & model families, extracts optimized
-local reference images (keeping repository & mobile payloads lean), and updates
-data/daily-feed.json atomically.
+Fetches 5 fresh world design & 3D product showcase works daily across:
+  1. 建筑 (architecture)   — ArchDaily RSS + Sketchfab Architecture Staff Picks
+  2. 工业 (industrial)     — Sketchfab Industrial / Science-Tech Staff Picks
+  3. 美术 (art)            — Sketchfab Art & Cultural Heritage Staff Picks
+  4. 渲染 (render)         — Sketchfab Global Staff Picks PBR 3D Renders
+  5. 商品 3D 展板 (product3d) — Rotating iPhone / Car / CNC Machine / Robot / Camera / Watch 3D models
+
+Every ingested work has a verified local JPEG preview image saved in assets/refs/,
+and automatically routes into 「每日精选」 + 「世界设计大奖」 or 「商品 3D 展板」.
 
 Usage:
   python scripts/update-data.py
-  python scripts/update-data.py --quota 8 --max-images 6
+  python scripts/update-data.py --quota 5
   python scripts/update-data.py --dry-run
 """
 import argparse
+import datetime
+import html
 import io
 import json
 import os
 import re
+import ssl
+import subprocess
 import sys
 import time
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from PIL import Image
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
+ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT / "data"
+REFS_DIR = ROOT / "assets" / "refs"
+FEED_PATH = DATA_DIR / "daily-feed.json"
+SEED_DATA_JS = ROOT / "src" / "linear" / "data.js"
 
-import daily_ai_harvest as h
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+REFS_DIR.mkdir(parents=True, exist_ok=True)
 
-ROOT = h.ROOT
-REFS_DIR = h.REFS_DIR
-FEED_PATH = h.FEED_PATH
-CANDIDATES_PATH = h.CANDIDATES_PATH
+UA = "DongDongDesignVault/1.0 (https://github.com/huanghd1/dong-wanzhao)"
+CTX = ssl._create_unverified_context()
+TZ_CN = datetime.timezone(datetime.timedelta(hours=8))
 
-CATEGORIES = ("design", "game", "web", "product", "app")
-SOURCE_PRIORITY = {
-    "VibeFather": 0,
-    "Fable5.2-Showcase": 1,
-    "MadeWithLovable": 2,
-    "GitHub Trending": 3,
-    "VibeFather-Index": 4,
-    "Show HN": 5,
+CATEGORY_META = {
+    "architecture": "建筑",
+    "industrial": "工业设计",
+    "art": "美术",
+    "render": "3D 渲染",
+    "spatial": "空间展陈",
+    "product3d": "商品 3D 展板",
 }
 
-
-def clean_model_display(raw):
-    txt = re.sub(r"<[^>]+>", " ", raw or "")
-    txt = txt.replace("\xa0", " ")
-    txt = re.sub(r"\s*[·|]\s*(Live demo|Prompt|DESIGN\.md).*$", "", txt, flags=re.I)
-    txt = re.sub(r"\s+", " ", txt).strip(" ·,|")
-    if len(txt) > 42:
-        parts = [p.strip() for p in re.split(r"[,·/|]", txt) if p.strip()]
-        txt = " / ".join(parts[:2])[:42]
-    return txt
-
-
-def fetch_design_md_dna(slug):
-    """Fetch optional DESIGN.md from awesome-vibe-coding-websites to extract real design DNA."""
-    if not slug:
-        return []
-    url = f"https://raw.githubusercontent.com/liyupi/awesome-vibe-coding-websites/main/templates/{slug}/DESIGN.md"
-    txt = h.fetch_text(url, timeout=10)
-    if not txt:
-        return []
-
-    dna = []
-    hex_codes = list(dict.fromkeys(re.findall(r"#[0-9A-Fa-f]{6}\b", txt)))[:5]
-    if hex_codes:
-        dna.append(["核心色板", " / ".join(hex_codes)])
-
-    fonts = []
-    for m in re.finditer(r"(?:font-family|display|heading|body|mono)[^\n:]*[:：]\s*`?([A-Za-z][A-Za-z0-9\s,'\"-]+)`?", txt, re.I):
-        val = m.group(1).strip().strip("`'\" ")
-        if 2 <= len(val) <= 48 and val not in fonts:
-            fonts.append(val)
-    if fonts:
-        dna.append(["字体体系", " · ".join(fonts[:3])])
-
-    for line in txt.splitlines():
-        s = line.strip()
-        if s.startswith("> ") and len(s) > 16:
-            dna.append(["设计定位", s[2:].strip()[:120]])
-            break
-    return dna[:4]
+PRODUCT3D_QUERIES = [
+    ("phone", "iphone pro", "手机数码"),
+    ("car", "porsche 911", "汽车出行"),
+    ("cnc", "cnc lathe", "工业机床"),
+    ("robot", "industrial robot arm", "工业装备"),
+    ("watch", "mechanical watch", "精密腕表"),
+    ("car", "supercar ferrari", "汽车出行"),
+    ("cnc", "milling machine", "工业机床"),
+    ("watch", "leica camera", "精密影像"),
+    ("phone", "headphones studio", "声学数码"),
+    ("robot", "jet engine turbine", "工业装备"),
+]
 
 
-def fetch_og_image_url(page_url):
-    """Best-effort og:image extraction for Show HN / VibeFather-Index pages."""
-    html_text = h.fetch_text(page_url, timeout=10)
-    if not html_text:
+def now_iso():
+    return datetime.datetime.now(TZ_CN).isoformat(timespec="seconds")
+
+
+def today_compact():
+    return datetime.datetime.now(TZ_CN).strftime("%Y%m%d")
+
+
+def today_dash():
+    return datetime.datetime.now(TZ_CN).strftime("%Y-%m-%d")
+
+
+def fetch_bytes(url, timeout=18, retries=2):
+    last_err = None
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=timeout, context=CTX) as resp:
+                data = resp.read()
+                if data:
+                    return data
+        except Exception as e:
+            last_err = e
+        # Fallback to curl (handles Windows proxy TLS smoothly)
+        try:
+            curl_bin = "curl.exe" if os.name == "nt" else "curl"
+            r = subprocess.run(
+                [curl_bin, "-sL", "--max-time", str(timeout), "-H", f"User-Agent: {UA}", url],
+                capture_output=True,
+            )
+            if r.returncode == 0 and r.stdout:
+                return r.stdout
+        except Exception as e:
+            last_err = e
+        if attempt < retries:
+            time.sleep(0.6)
+    raise RuntimeError(f"Failed to fetch {url[:80]}: {last_err}")
+
+
+def fetch_text(url, timeout=15):
+    try:
+        return fetch_bytes(url, timeout=timeout, retries=1).decode("utf-8", "ignore")
+    except Exception as e:
+        print(f"[WARN] fetch failed: {url[:75]} -> {e}", file=sys.stderr, flush=True)
         return ""
-    patterns = [
-        r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\'](https?://[^"\']+)["\']',
-        r'<meta[^>]+content=["\'](https?://[^"\']+)["\'][^>]+property=["\']og:image["\']',
-        r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\'](https?://[^"\']+)["\']',
+
+
+def fetch_json(url, timeout=15):
+    txt = fetch_text(url, timeout=timeout)
+    if not txt.strip():
+        return {}
+    try:
+        return json.loads(txt)
+    except Exception as e:
+        print(f"[WARN] json parse failed: {url[:75]} -> {e}", file=sys.stderr, flush=True)
+        return {}
+
+
+def load_feed():
+    if FEED_PATH.exists():
+        try:
+            data = json.loads(FEED_PATH.read_text(encoding="utf-8"))
+            data.setdefault("schemaVersion", 2)
+            return data
+        except Exception:
+            pass
+    return {
+        "schemaVersion": 2,
+        "schedule": "GitHub Actions Daily 09:00 Asia/Shanghai (01:00 UTC)",
+        "dailyQuota": 5,
+        "maxImagesPerWork": 6,
+        "lastUpdatedAt": None,
+        "lastRunSummary": "等待每日自动抓取（每日 5 部世界设计大奖与商品 3D 展板）",
+        "categories": list(CATEGORY_META.keys()),
+        "items": [],
+    }
+
+
+def save_feed(feed):
+    tmp = FEED_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(feed, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(FEED_PATH)
+
+
+def existing_urls_and_titles():
+    seen_urls, seen_titles = set(), set()
+    feed = load_feed()
+    for it in feed.get("items", []):
+        if it.get("sourceUrl"):
+            seen_urls.add(it["sourceUrl"].split("?")[0].rstrip("/").lower())
+        if it.get("title"):
+            seen_titles.add(it["title"].strip().lower())
+    if SEED_DATA_JS.exists():
+        txt = SEED_DATA_JS.read_text(encoding="utf-8", errors="ignore")
+        for u in re.findall(r'sourceUrl:\s*"([^"]+)"', txt):
+            seen_urls.add(u.split("?")[0].rstrip("/").lower())
+    return seen_urls, seen_titles
+
+
+def best_sketchfab_thumb(model):
+    imgs = model.get("thumbnails", {}).get("images", [])
+    if not imgs:
+        return ""
+    imgs = sorted(imgs, key=lambda x: -(x.get("width") or 0))
+    for im in imgs:
+        if 720 <= (im.get("width") or 0) <= 1920:
+            return im.get("url", "")
+    return imgs[0].get("url", "")
+
+
+def clean_plain_text(raw, limit=220):
+    txt = html.unescape(re.sub(r"<[^>]+>", " ", raw or ""))
+    txt = re.sub(r"\s+", " ", txt).strip()
+    return txt[:limit]
+
+
+def discover_world_and_3d_candidates():
+    """Fetch fresh candidates across Architecture, Industrial, Art, 3D Render, and Product 3D Boards."""
+    seen_urls, seen_titles = existing_urls_and_titles()
+    buckets = {k: [] for k in ("architecture", "industrial", "art", "render", "product3d")}
+    added = set()
+
+    def push(cat, cand):
+        u = (cand.get("url") or "").split("?")[0].rstrip("/").lower()
+        t = (cand.get("title") or "").strip().lower()
+        if not u or not cand.get("img") or u in seen_urls or u in added or t in seen_titles:
+            return
+        added.add(u)
+        buckets[cat].append(cand)
+
+    # 1. ArchDaily RSS — fresh global architecture masterpieces
+    rss_xml = fetch_text("https://www.archdaily.com/rss", timeout=15)
+    if rss_xml:
+        try:
+            root = ET.fromstring(rss_xml)
+            for item in root.findall(".//item")[:20]:
+                title = clean_plain_text(item.findtext("title"), 120)
+                link = (item.findtext("link") or "").strip()
+                desc_raw = item.findtext("description") or ""
+                img = ""
+                for enc in item.findall("enclosure"):
+                    if enc.attrib.get("url"):
+                        img = enc.attrib["url"]
+                        break
+                if not img:
+                    m_img = re.search(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', desc_raw, re.I)
+                    if m_img:
+                        img = m_img.group(1)
+                if not img:
+                    for el in item:
+                        if el.tag.endswith("content") and el.attrib.get("url"):
+                            img = el.attrib["url"]
+                            break
+                desc = clean_plain_text(desc_raw, 200)
+                if re.match(r"^(open call|call for|competition|subscribe|podcast)", title, re.I):
+                    continue
+                if title and link and img:
+                    push("architecture", {
+                        "source": "ArchDaily",
+                        "title": title,
+                        "url": link,
+                        "img": img,
+                        "author": "ArchDaily Featured",
+                        "description": desc or f"ArchDaily 全球建筑精选：{title}",
+                        "tags": ["建筑", "ArchDaily", "国际建筑"],
+                    })
+        except Exception as e:
+            print(f"[WARN] ArchDaily RSS parse failed: {e}", file=sys.stderr, flush=True)
+
+    # 2. Sketchfab Staff Picks & Curated Discipline Searches
+    sf_queries = [
+        ("architecture", "https://api.sketchfab.com/v3/models?staffpicked=true&categories=architecture&sort_by=-publishedAt&count=12", "Sketchfab Architecture", None),
+        ("industrial", "https://api.sketchfab.com/v3/models?staffpicked=true&categories=science-technology&sort_by=-publishedAt&count=12", "Sketchfab Industrial", None),
+        ("art", "https://api.sketchfab.com/v3/models?staffpicked=true&categories=art-abstract&sort_by=-publishedAt&count=12", "Sketchfab Fine Art", None),
+        ("render", "https://api.sketchfab.com/v3/models?staffpicked=true&sort_by=-publishedAt&count=16", "Sketchfab Staff Pick", None),
     ]
-    for pat in patterns:
-        m = re.search(pat, html_text, flags=re.I)
-        if m:
-            return m.group(1).strip()
-    return ""
 
+    # Rotate 3 product 3D showcase queries per day based on day-of-year
+    day_idx = datetime.datetime.now(TZ_CN).timetuple().tm_yday
+    for offset in range(3):
+        sub_kind, q_str, cn_kind = PRODUCT3D_QUERIES[(day_idx + offset) % len(PRODUCT3D_QUERIES)]
+        q_url = "https://api.sketchfab.com/v3/search?" + urllib.parse.urlencode({
+            "type": "models", "q": q_str, "sort_by": "-likeCount", "count": 8,
+        })
+        sf_queries.append(("product3d", q_url, f"Sketchfab 3D · {cn_kind}", sub_kind))
 
-def save_optimized_refs(prefix, cand, max_images=6, max_webp_kb=550):
-    """
-    Download and save verified local images into assets/refs/.
-    - Keeps animated WebP for slot 1 when <= max_webp_kb; otherwise extracts crisp JPG keyframes
-      so mobile pages load fast and GitHub Pages stays well below storage limits.
-    """
-    built_refs = []
-    title = cand.get("title", "AI 作品")
-    animated_url = (cand.get("animatedWebp") or "").strip()
-    preview_url = (cand.get("previewImg") or "").strip()
-
-    if not animated_url and not preview_url and cand.get("url"):
-        preview_url = fetch_og_image_url(cand["url"])
-
-    if animated_url:
-        raw = h.fetch_bytes(animated_url, timeout=22)
-        with Image.open(io.BytesIO(raw)) as im:
-            n_frames = getattr(im, "n_frames", 1)
-            keep_webp = n_frames > 1 and (len(raw) / 1024.0) <= max_webp_kb
-
-            captions = [
-                ("动态实机录屏" if keep_webp else "首屏主视觉", "动态录屏" if keep_webp else "实机截帧", "完整首屏构图与交互状态预览。"),
-                ("核心界面层次", "实机截帧", "主内容区排版、视觉对比与组件细节。"),
-                ("交互状态（一）", "实机截帧", "关键交互过渡、筛选或切换视图。"),
-                ("交互状态（二）", "实机截帧", "信息密度、栅格节奏与动效表现。"),
-                ("细节组件特写", "实机截帧", "卡片层级、数据可视化或参数面板。"),
-                ("页面收口结构", "实机截帧", "底部收尾、CTA 或完整功能闭环。"),
-            ]
-
-            slot = 1
-            if keep_webp:
-                dest = REFS_DIR / f"{prefix}-{slot}.webp"
-                dest.write_bytes(raw)
-                built_refs.append({
-                    "title": f"{title} · {captions[0][0]}",
-                    "tag": captions[0][1],
-                    "src": f"./assets/refs/{dest.name}",
-                    "caption": captions[0][2],
-                })
-                slot += 1
-                pcts = [0.14, 0.32, 0.50, 0.70, 0.88][: max(0, max_images - 1)]
-            else:
-                if n_frames == 1:
-                    pcts = [0.0]
-                else:
-                    count = min(max_images, n_frames)
-                    pcts = [i / max(count - 1, 1) * 0.92 for i in range(count)]
-
-            used_frames = set()
-            for idx, pct in enumerate(pcts):
-                if slot > max_images:
-                    break
-                fi = min(n_frames - 1, max(0, int((n_frames - 1) * pct)))
-                if fi in used_frames and n_frames > 1:
-                    continue
-                used_frames.add(fi)
-                im.seek(fi)
-                fr = im.convert("RGB")
-                w, ht = fr.size
-                if w > 960:
-                    fr = fr.resize((960, max(1, int(ht * 960 / w))), Image.Resampling.LANCZOS)
-                elif w < 560:
-                    scale = min(2.0, 720 / max(w, 1))
-                    fr = fr.resize((int(w * scale), max(1, int(ht * scale))), Image.Resampling.LANCZOS)
-                dest = REFS_DIR / f"{prefix}-{slot}.jpg"
-                fr.save(dest, quality=80, optimize=True)
-                cap_idx = min(slot - 1, len(captions) - 1)
-                built_refs.append({
-                    "title": f"{title} · {captions[cap_idx][0]}",
-                    "tag": captions[cap_idx][1],
-                    "src": f"./assets/refs/{dest.name}",
-                    "caption": captions[cap_idx][2],
-                })
-                slot += 1
-        return built_refs
-
-    if preview_url:
-        raw = h.fetch_bytes(preview_url, timeout=18)
-        with Image.open(io.BytesIO(raw)) as im:
-            fr = im.convert("RGB")
-            w, ht = fr.size
-            if w < 200 or ht < 120:
-                return []
-            if w > 960:
-                fr = fr.resize((960, max(1, int(ht * 960 / w))), Image.Resampling.LANCZOS)
-            dest = REFS_DIR / f"{prefix}-1.jpg"
-            fr.save(dest, quality=82, optimize=True)
-            built_refs.append({
-                "title": f"{title} · 实机预览",
-                "tag": "实机预览",
-                "src": f"./assets/refs/{dest.name}",
-                "caption": (cand.get("description") or "上游精选来源自动抓取的视觉预览图。")[:140],
-            })
-        return built_refs
-
-    return []
-
-
-def select_balanced_candidates(candidates, quota):
-    """
-    Pick up to `quota` candidates balanced across all 5 categories and both model families,
-    strongly preferring visual-rich sources with verified media URLs.
-    """
-    def rank_key(c):
-        has_media = 0 if (c.get("animatedWebp") or c.get("previewImg")) else 1
-        src_rank = SOURCE_PRIORITY.get(c.get("source", ""), 9)
-        pts = -(c.get("points") or 0)
-        return (has_media, src_rank, pts)
-
-    sorted_pool = sorted(candidates, key=rank_key)
-    buckets = {cat: [] for cat in CATEGORIES}
-    for c in sorted_pool:
-        cat = c.get("categoryHint", "web")
-        if cat not in buckets:
-            cat = "web"
-        buckets[cat].append(c)
-
-    selected = []
-    seen_urls = set()
-
-    def try_take(cat, prefer_family=None):
-        pool = buckets[cat]
-        if prefer_family:
-            for i, c in enumerate(pool):
-                u = (c.get("url") or "").lower()
-                if u in seen_urls:
-                    continue
-                if c.get("modelFamilyHint") == prefer_family:
-                    seen_urls.add(u)
-                    return pool.pop(i)
-        for i, c in enumerate(pool):
-            u = (c.get("url") or "").lower()
-            if u in seen_urls:
+    for cat, url, source_label, sub_kind in sf_queries:
+        d = fetch_json(url, timeout=15)
+        for m in d.get("results", []):
+            name = (m.get("name") or "").strip()
+            vurl = (m.get("viewerUrl") or "").strip()
+            img = best_sketchfab_thumb(m)
+            likes = m.get("likeCount") or 0
+            views = m.get("viewCount") or 0
+            author = (m.get("user") or {}).get("displayName") or "3D Artist"
+            desc = clean_plain_text(m.get("description") or "", 190)
+            if not name or not vurl or not img:
                 continue
-            seen_urls.add(u)
-            return pool.pop(i)
-        return None
+            # Filter out obvious low-quality or spam names
+            if re.search(r"\$\d+|for sale|buy now", name, re.I) and likes < 300:
+                continue
+            push(cat, {
+                "source": source_label,
+                "title": name,
+                "url": vurl,
+                "img": img,
+                "author": author,
+                "likes": likes,
+                "views": views,
+                "subKind": sub_kind or "",
+                "description": desc or f"{author} 创作的高赞 3D 展示作品（{likes} 赞 · {views} 浏览），点击来源支持 360° 实时交互。",
+                "tags": [CATEGORY_META[cat], source_label.split("·")[0].strip(), f"{likes} Likes"],
+            })
+        time.sleep(0.45)
 
-    # Round-robin across categories while alternating Claude / other model preference
-    want_claude = True
-    while len(selected) < quota * 2:  # keep 2x candidate buffer in case a download fails
+    return buckets
+
+
+def save_preview_image(prefix, img_url, title, source):
+    raw = fetch_bytes(img_url, timeout=20, retries=2)
+    with Image.open(io.BytesIO(raw)) as im:
+        fr = im.convert("RGB")
+        w, ht = fr.size
+        if w < 260 or ht < 160:
+            raise ValueError(f"Image too small: {w}x{ht}")
+        if w > 960:
+            fr = fr.resize((960, max(1, int(ht * 960 / w))), Image.Resampling.LANCZOS)
+        dest = REFS_DIR / f"{prefix}-1.jpg"
+        fr.save(dest, quality=82, optimize=True)
+        return [{
+            "title": f"{title} · 主视觉预览",
+            "tag": "3D 展板" if "Sketchfab" in source else "实景精选",
+            "src": f"./assets/refs/{dest.name}",
+            "caption": f"来自 {source} 的每日自动采集高清主视觉，点击「打开来源」可查看完整作品或 360° 3D 交互。",
+        }]
+
+
+def select_daily_candidates(buckets, quota):
+    """Round-robin across 5 target pillars: architecture, industrial, art, render, product3d."""
+    order = ["architecture", "industrial", "art", "render", "product3d"]
+    pools = {k: list(buckets.get(k, [])) for k in order}
+    picked = []
+    # Keep 2x buffer in case an image download fails
+    while len(picked) < quota * 2:
         progressed = False
-        for cat in CATEGORIES:
-            if len(selected) >= quota * 2:
+        for cat in order:
+            if len(picked) >= quota * 2:
                 break
-            picked = try_take(cat, "claude" if want_claude else "other")
-            if picked:
-                selected.append(picked)
-                want_claude = not want_claude
+            if pools[cat]:
+                picked.append((cat, pools[cat].pop(0)))
                 progressed = True
         if not progressed:
             break
+    return picked
 
-    return selected
 
+def build_daily_item(cat, cand, key, item_id, date_str, now_ms, idx, refs):
+    cat_cn = CATEGORY_META.get(cat, "设计")
+    routed_views = ["daily", "product3d"] if cat == "product3d" else ["daily", "awards"]
+    source = cand.get("source") or "Design Feed"
+    author = cand.get("author") or source
+    likes = cand.get("likes")
+    metrics = f"{likes} Likes / {cand.get('views', 0)} Views" if likes is not None else "ArchDaily Editorial Pick"
 
-def build_item(cand, key, item_id, date_str, now_ms, idx, refs):
-    cat = cand.get("categoryHint", "web")
-    if cat not in h.CATEGORY_META:
-        cat = "web"
-    raw_model = clean_model_display(cand.get("models") or cand.get("modelNameHint") or "")
-    model_family, model_name = h.infer_model_info({
-        "modelFamily": cand.get("modelFamilyHint", ""),
-        "modelName": raw_model,
-        "title": cand.get("title", ""),
-        "sourceUrl": cand.get("url", ""),
-    })
-    model_name = clean_model_display(model_name) or ("Claude Fable 5.2" if model_family == "claude" else "Multi-Model AI")
-    routed_views = h.compute_routed_views(cat, model_family)
-
-    desc = (cand.get("description") or "").strip()
-    source = cand.get("source") or "Upstream"
-    cat_cn = h.CATEGORY_META[cat]
-    essence = desc if desc else f"来自 {source} 的 AI 生成{cat_cn}精选作品，由 {model_name} 驱动构建。"
-
-    dna = []
-    if cand.get("slug") and source.startswith("VibeFather"):
-        dna.extend(fetch_design_md_dna(cand["slug"]))
-    if not dna:
-        dna = [
-            ["来源渠道", source],
-            ["模型家族", f"{model_name}（{'Claude 系列' if model_family == 'claude' else '其他模型'}）"],
-            ["自动归类", f"{cat_cn} · {' / '.join(routed_views)}"],
-        ]
-
-    notes = [
-        f"GitHub Actions 每日自动采集入库（来源：{source}），点击右上角「打开来源」可体验原站与完整细节。",
-        "复刻时请优先提取其布局节奏、对比度层级与交互状态反馈，避免直接照搬装饰元素。",
+    dna = [
+        ["来源渠道", source],
+        ["作者 / 机构", author],
+        ["自动归属", f"{cat_cn}（自动同步至 {' / '.join(routed_views)}）"],
+        ["社区热度", metrics],
     ]
+    notes = [
+        f"GitHub Actions 每日 09:00 自动采集入库（来源：{source}）。",
+        "点击详情底部「打开来源 ↗」可浏览高清原文或直接 360° 交互检视 3D 模型。" if "Sketchfab" in source else "点击详情底部「打开来源 ↗」可查看完整图纸、剖面与高分辨率实景摄影。",
+    ]
+    labels = list(dict.fromkeys([cat_cn, *(cand.get("tags") or [])]))[:4]
 
-    labels = list(dict.fromkeys([cat_cn, model_name, source]))[:4]
-    return {
+    item = {
         "id": item_id,
         "key": key,
         "type": "daily",
         "category": cat,
-        "modelFamily": model_family,
-        "modelName": model_name,
         "routedViews": routed_views,
         "discoveredDate": date_str,
-        "title": (cand.get("title") or "Untitled AI Work").strip(),
+        "title": cand["title"],
         "domain": f"每日精选 / {cat_cn} · {source}",
         "status": "backlog",
         "priority": 2,
         "starred": False,
         "labels": labels,
-        "essence": essence,
+        "essence": cand.get("description") or f"来自 {source} 的每日精选{cat_cn}作品。",
         "dna": dna,
         "notes": notes,
-        "notesLabel": "自动化采集备注",
-        "sourceUrl": (cand.get("url") or "").strip(),
+        "notesLabel": "自动采集说明",
+        "sourceUrl": cand["url"],
         "updatedAt": now_ms - idx * 1000,
         "refs": refs,
     }
+    if cand.get("subKind"):
+        item["subKind"] = cand["subKind"]
+    return item
 
 
 def prune_old_daily_items(feed, max_items):
-    """Keep rolling window of auto-harvested daily items and remove orphaned daily-* images."""
     items = feed.get("items", [])
     if max_items <= 0 or len(items) <= max_items:
-        return 0
+        return
     kept = items[:max_items]
     dropped = items[max_items:]
     feed["items"] = kept
-
-    still_used = {
-        r["src"].lstrip("./")
-        for it in kept
-        for r in it.get("refs", [])
-        if r.get("src")
-    }
-    removed_files = 0
+    still_used = {r["src"].lstrip("./") for it in kept for r in it.get("refs", []) if r.get("src")}
+    removed = 0
     for it in dropped:
         for r in it.get("refs", []):
             src = (r.get("src") or "").lstrip("./")
@@ -341,57 +388,36 @@ def prune_old_daily_items(feed, max_items):
                 fp = ROOT / src
                 if fp.exists():
                     fp.unlink()
-                    removed_files += 1
-    if removed_files:
-        print(f"[PRUNE] Trimmed {len(dropped)} old items and removed {removed_files} orphaned daily refs.")
-    return len(dropped)
-
-
-def cleanup_prefix(prefix):
-    for fp in REFS_DIR.glob(f"{prefix}-*"):
-        try:
-            fp.unlink()
-        except OSError:
-            pass
+                    removed += 1
+    if removed:
+        print(f"[PRUNE] Trimmed {len(dropped)} old items and removed {removed} orphaned daily images.")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Autonomous daily AI design vault data updater")
-    parser.add_argument("--quota", type=int, default=int(os.environ.get("DAILY_QUOTA", "8")), help="Number of new works to add per run (default: 8)")
-    parser.add_argument("--max-images", type=int, default=int(os.environ.get("MAX_IMAGES_PER_WORK", "6")), help="Max images saved per work (default: 6)")
-    parser.add_argument("--max-webp-kb", type=int, default=int(os.environ.get("MAX_WEBP_KB", "550")), help="Max KB to keep animated WebP intact (default: 550)")
-    parser.add_argument("--max-items", type=int, default=int(os.environ.get("MAX_FEED_ITEMS", "120")), help="Rolling cap of daily feed items (default: 120)")
-    parser.add_argument("--dry-run", action="store_true", help="Discover and select candidates without downloading images or modifying daily-feed.json")
-    parser.add_argument("--skip-discover", action="store_true", help="Reuse existing data/candidates-latest.json instead of fetching upstream feeds")
+    parser = argparse.ArgumentParser(description="Daily 5-item updater for 东东设计万物 (World Design & Product 3D)")
+    parser.add_argument("--quota", type=int, default=int(os.environ.get("DAILY_QUOTA", "5")), help="Works to add per run (default: 5)")
+    parser.add_argument("--max-items", type=int, default=int(os.environ.get("MAX_FEED_ITEMS", "120")), help="Rolling window cap (default: 120)")
+    parser.add_argument("--dry-run", action="store_true", help="Discover and print selected items without writing files")
     args = parser.parse_args()
 
-    quota = max(1, min(args.quota, 24))
-    max_images = max(1, min(args.max_images, 6))
+    quota = max(1, min(args.quota, 16))
+    print(f"[1/3] Discovering world design & 3D showcase candidates (target={quota}/day)...", flush=True)
+    buckets = discover_world_and_3d_candidates()
+    print("  Pool counts:", {k: len(v) for k, v in buckets.items()}, flush=True)
 
-    if not args.skip_discover:
-        print("[1/3] Discovering fresh candidates from upstream sources...", flush=True)
-        h.cmd_discover()
-    elif not CANDIDATES_PATH.exists():
-        print("[ERROR] --skip-discover used but data/candidates-latest.json does not exist.", file=sys.stderr)
-        sys.exit(1)
-
-    payload = json.loads(CANDIDATES_PATH.read_text(encoding="utf-8"))
-    candidates = payload.get("candidates", [])
+    candidates = select_daily_candidates(buckets, quota)
     if not candidates:
-        print("[WARN] Zero fresh candidates discovered; keeping existing data/daily-feed.json unchanged.")
+        print("[WARN] No unseen candidates found; keeping existing daily-feed.json untouched.")
         return
 
-    chosen_pool = select_balanced_candidates(candidates, quota)
-    print(f"[2/3] Ranked {len(chosen_pool)} balanced candidates (target quota={quota}).", flush=True)
-
+    print(f"[2/3] Ranked {len(candidates)} balanced candidates.", flush=True)
     if args.dry_run:
-        for i, c in enumerate(chosen_pool[:quota], 1):
-            print(f"  {i:02d}. [{c.get('categoryHint')}/{c.get('modelFamilyHint')}] ({c.get('source')}) {c.get('title')} -> {c.get('url')}")
+        for i, (cat, c) in enumerate(candidates[:quota], 1):
+            print(f"  {i:02d}. [{cat}] ({c['source']}) {c['title']} -> {c['url']}")
         print("[DRY-RUN] No files modified.")
         return
 
-    feed = h.load_feed()
-    seen_urls, seen_titles = h.existing_urls_and_keys()
+    feed = load_feed()
     existing_nums = [
         int(m.group(1))
         for it in feed.get("items", [])
@@ -399,67 +425,43 @@ def main():
         if m
     ]
     next_num = max(existing_nums, default=0) + 1
-    date_tag = h.today_compact()
-    date_str = h.today_dash()
+    date_tag = today_compact()
+    date_str = today_dash()
     now_ms = int(time.time() * 1000)
 
-    print(f"[3/3] Ingesting up to {quota} verified works into {FEED_PATH}...", flush=True)
+    print(f"[3/3] Ingesting up to {quota} verified works...", flush=True)
     ingested = []
-    for cand in chosen_pool:
+    for cat, cand in candidates:
         if len(ingested) >= quota:
             break
-        src_url = (cand.get("url") or "").split("?")[0].rstrip("/").lower()
-        title_key = (cand.get("title") or "").strip().lower()
-        if not src_url or src_url in seen_urls or title_key in seen_titles:
-            continue
-
         key = f"DY-{next_num}"
         item_id = f"dy-{date_tag}-{next_num}"
         prefix = f"daily-{date_tag}-{next_num}"
-
         try:
-            refs = save_optimized_refs(prefix, cand, max_images=max_images, max_webp_kb=args.max_webp_kb)
+            refs = save_preview_image(prefix, cand["img"], cand["title"], cand["source"])
         except Exception as e:
-            print(f"  [SKIP] {cand.get('title')} ({cand.get('source')}): media fetch failed -> {e}", file=sys.stderr, flush=True)
-            cleanup_prefix(prefix)
+            print(f"  [SKIP] {cand['title']}: {e}", file=sys.stderr, flush=True)
             continue
 
-        # Verify all saved files exist on disk
-        refs = [r for r in refs if (ROOT / r["src"].lstrip("./")).exists()]
-        if not refs:
-            print(f"  [SKIP] {cand.get('title')} ({cand.get('source')}): no valid preview image", flush=True)
-            cleanup_prefix(prefix)
-            continue
-
-        item = build_item(cand, key, item_id, date_str, now_ms, len(ingested) + 1, refs)
+        item = build_daily_item(cat, cand, key, item_id, date_str, now_ms, len(ingested) + 1, refs)
         ingested.append(item)
-        seen_urls.add(src_url)
-        seen_titles.add(title_key)
         next_num += 1
-        print(f"  [OK] {key} [{item['category']}/{item['modelFamily']}] {item['title']} ({len(refs)} imgs)", flush=True)
+        print(f"  [OK] {key} [{cat}] {item['title']} -> {refs[0]['src']}", flush=True)
 
     if not ingested:
-        print("[WARN] No new works could be ingested this run; existing feed left untouched.")
+        print("[WARN] Zero items ingested after download attempts; feed unchanged.")
         return
 
     feed["schemaVersion"] = 2
     feed["schedule"] = "GitHub Actions Daily 09:00 Asia/Shanghai (01:00 UTC)"
     feed["dailyQuota"] = quota
-    feed["maxImagesPerWork"] = max_images
     feed["items"] = ingested + feed.get("items", [])
     prune_old_daily_items(feed, args.max_items)
-    feed["lastUpdatedAt"] = h.now_iso()
-
-    cats_hit = " / ".join(sorted({h.CATEGORY_META[i["category"]] for i in ingested}))
-    c_cnt = sum(1 for i in ingested if i["modelFamily"] == "claude")
-    o_cnt = len(ingested) - c_cnt
-    total_imgs = sum(len(i["refs"]) for i in ingested)
-    feed["lastRunSummary"] = (
-        f"{date_str} 自动新增 {len(ingested)} 部（{cats_hit} · Claude {c_cnt} / 其他模型 {o_cnt}），"
-        f"共 {total_imgs} 张图并自动归类"
-    )
-    h.save_feed(feed)
-    print(f"DONE: Added {len(ingested)} works ({total_imgs} images). Total daily feed items: {len(feed['items'])}.")
+    feed["lastUpdatedAt"] = now_iso()
+    cats_hit = " / ".join(sorted({CATEGORY_META.get(i["category"], i["category"]) for i in ingested}))
+    feed["lastRunSummary"] = f"{date_str} 自动新增 {len(ingested)} 部（{cats_hit}），并自动归入世界设计大奖与商品 3D 展板"
+    save_feed(feed)
+    print(f"DONE: Added {len(ingested)} works. Total daily feed items: {len(feed['items'])}.")
 
 
 if __name__ == "__main__":

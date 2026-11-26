@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "schedule": "CRON_TZ=Asia/Shanghai 0 9 * * *",
-  "dailyQuota": 16,
+  "schedule": "GitHub Actions Daily 09:00 Asia/Shanghai (01:00 UTC)",
+  "dailyQuota": 5,
   "maxImagesPerWork": 6,
   "lastUpdatedAt": "2026-11-26T22:00:00+08:00",
   "lastRunSummary": "已配置单日自动更新 16 部（设计/游戏/网页/产品/App 全覆盖，按模型与品类自动归入对应列表）；当前已入库 5 部共 30 张图",
@@ -20,7 +20,11 @@
       "category": "game",
       "modelFamily": "other",
       "modelName": "Gemini 4 Neon / GPT-6.2 Sol",
-      "routedViews": ["daily", "games", "othermodel"],
+      "routedViews": [
+        "daily",
+        "games",
+        "othermodel"
+      ],
       "discoveredDate": "2026-11-26",
       "title": "Alpine Ski Run · 3D 阿尔卑斯第一人称滑雪游戏",
       "domain": "每日精选 / 3D 网页游戏",
@@ -105,7 +109,11 @@
       "category": "design",
       "modelFamily": "claude",
       "modelName": "Claude Opus 5.5",
-      "routedViews": ["daily", "aiweb", "fable"],
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
       "discoveredDate": "2026-11-26",
       "title": "Moonfoil · Y2K 液态铬金潮牌视觉发售页",
       "domain": "每日精选 / 先锋潮牌视觉设计",
@@ -190,7 +198,11 @@
       "category": "web",
       "modelFamily": "other",
       "modelName": "Gemini 4 Neon / GPT-6.2 Sol",
-      "routedViews": ["daily", "aiweb", "othermodel"],
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "othermodel"
+      ],
       "discoveredDate": "2026-11-26",
       "title": "Aurelia · 24,000 GPU 粒子变形 3D 空间音频官网",
       "domain": "每日精选 / 3D GPU 着色器网页",
@@ -275,7 +287,11 @@
       "category": "product",
       "modelFamily": "other",
       "modelName": "GLM-5.3 / DeepSeek V4.1",
-      "routedViews": ["daily", "products", "othermodel"],
+      "routedViews": [
+        "daily",
+        "products",
+        "othermodel"
+      ],
       "discoveredDate": "2026-11-26",
       "title": "Averkind · 独立机械腕表官网 × 实时表盘选配器",
       "domain": "每日精选 / 静奢硬件产品官网",
@@ -360,7 +376,11 @@
       "category": "app",
       "modelFamily": "claude",
       "modelName": "Claude Opus 5.5",
-      "routedViews": ["daily", "products", "fable"],
+      "routedViews": [
+        "daily",
+        "products",
+        "fable"
+      ],
       "discoveredDate": "2026-11-26",
       "title": "Gridlark / Wattline · 暗黑家庭能源监控仪表盘 App",
       "domain": "每日精选 / 智能硬件监控 App",

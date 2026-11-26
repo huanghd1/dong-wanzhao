@@ -19,19 +19,26 @@ export const PRIORITIES = [
 
 export const VIEWS = [
   { id: "all", label: "全部条目", icon: "▤", go: "A" },
-  { id: "daily", label: "每日 AI 精选", icon: "✹", go: "D" },
+  { id: "daily", label: "每日精选", icon: "✹", go: "D" },
+  { id: "awards", label: "世界设计大奖", icon: "♛", go: "R" },
+  { id: "product3d", label: "商品 3D 展板", icon: "❖", go: "3" },
   { id: "benchmark", label: "十大设计母本", icon: "◆", go: "B" },
   { id: "theory", label: "经典理念与著作", icon: "◈", go: "T" },
   { id: "aiweb", label: "AI 网页与设计", icon: "✧", go: "W" },
   { id: "games", label: "AI 游戏作品", icon: "♞", go: "G" },
   { id: "products", label: "AI 产品与 App", icon: "⬢", go: "P" },
   { id: "fable", label: "Claude 优秀作品", icon: "✦", go: "F" },
-  { id: "othermodel", label: "其他模型优秀作品", icon: "❖", go: "M" },
+  { id: "othermodel", label: "其他模型优秀作品", icon: "◇", go: "M" },
   { id: "starred", label: "已加星", icon: "★", go: "S" },
 ];
 
 export const DAILY_CATEGORIES = [
   { id: "all", label: "全部" },
+  { id: "architecture", label: "建筑" },
+  { id: "industrial", label: "工业" },
+  { id: "art", label: "美术" },
+  { id: "render", label: "渲染" },
+  { id: "product3d", label: "3D 展板" },
   { id: "web", label: "网页" },
   { id: "game", label: "游戏" },
   { id: "design", label: "设计" },
@@ -39,14 +46,38 @@ export const DAILY_CATEGORIES = [
   { id: "app", label: "App" },
 ];
 
+export const AWARD_CATEGORIES = [
+  { id: "all", label: "全部大奖" },
+  { id: "architecture", label: "建筑" },
+  { id: "industrial", label: "工业设计" },
+  { id: "art", label: "美术" },
+  { id: "render", label: "3D 渲染" },
+  { id: "spatial", label: "空间展陈" },
+];
+
+export const PRODUCT3D_CATEGORIES = [
+  { id: "all", label: "全部展板" },
+  { id: "phone", label: "手机数码" },
+  { id: "car", label: "汽车出行" },
+  { id: "cnc", label: "工业机床" },
+  { id: "robot", label: "工业装备" },
+  { id: "watch", label: "精密腕表" },
+];
+
 export const DAILY_MODELS = [
-  { id: "all", label: "全部模型" },
+  { id: "all", label: "全部来源" },
   { id: "claude", label: "Claude 系列" },
   { id: "fable52", label: "Claude Fable 5.2" },
-  { id: "other", label: "其他模型" },
+  { id: "other", label: "其他模型 / 大师" },
 ];
 
 export const CATEGORY_LABELS = {
+  architecture: "建筑",
+  industrial: "工业设计",
+  art: "美术",
+  render: "3D 渲染",
+  spatial: "空间展陈",
+  product3d: "商品 3D 展板",
   web: "网页",
   game: "游戏",
   design: "设计",
@@ -890,15 +921,372 @@ const OTHER_MODELS = [
   },
 ];
 
+const WORLD_AWARDS = [
+  {
+    key: "AW-1",
+    category: "architecture",
+    title: "盖达尔·阿利耶夫中心 · Zaha Hadid Architects",
+    domain: "建筑设计 · 伦敦设计博物馆年度全场大奖",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["Design of the Year", "建筑", "参数化曲面"],
+    essence: "荣获 2014 伦敦设计博物馆「年度设计全场大奖（Design of the Year）」。扎哈·哈迪德以连续折叠的 GFRC 玻璃纤维混凝土外壳彻底消解直角与柱网，让广场地面像液态丝绸般无缝升起为礼堂与展厅。",
+    dna: [
+      ["奖项含金量", "London Design Museum Design of the Year 2014（首个建筑类全场总冠军）"],
+      ["结构与表皮", "空间钢网架 + 12,000+ 块定制 GFRC/GFRP 哑光白曲面幕墙，全建筑几乎零锐角"],
+      ["光线叙事", "玻璃幕墙随曲面折痕内凹，在白色室内流动墙面上投射随日照漂移的柔光带"],
+      ["空间动线", "斜坡、楼梯与悬挑平台直接成为雕塑语言，观者行走本身即参与空间几何变化"],
+    ],
+    notes: [
+      "参数化流体造型必须服务于清晰的内部流线与大跨度无柱视线，而非徒有其表的扭曲表皮",
+      "纯白大曲面极度依赖自然光漫反射与隐藏式线性灯槽，严禁使用生硬点光源破坏曲面连续性",
+    ],
+    sourceUrl: "https://www.zaha-hadid.com/architecture/heydar-aliyev-centre/",
+  },
+  {
+    key: "AW-2",
+    category: "architecture",
+    title: "卢浮宫阿布扎比 · Jean Nouvel（普利兹克奖大师作）",
+    domain: "建筑设计 · 普利兹克奖大师 / ArchDaily 年度大奖",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["Pritzker", "建筑", "光雨穹顶"],
+    essence: "普利兹克奖得主让·努维尔的博物馆巅峰：直径 180 米、由 8 层共 7,850 颗几何星形铝材叠合的浮空穹顶，将沙漠烈日过滤为闻名世界的「光雨（Rain of Light）」并令下方微气候降温约 5°C。",
+    dna: [
+      ["奖项含金量", "普利兹克建筑奖大师代表作 / ArchDaily 全球年度文化建筑 / 欧洲设计大奖"],
+      ["穹顶穿孔几何", "8 层错位叠合的阿拉伯星纹铝制网壳（总重 7,500 吨，仅靠 4 个隐蔽巨墩支承）"],
+      ["光影与水景", "极简白立方展厅漂浮于潮汐海水之上，阳光穿过星孔在白墙与水面形成动态星点矩阵"],
+      ["被动生态工程", "穹顶遮阳 + 海水蒸发冷却，在 45°C 沙漠气候下创造可步行游览的半户外「博物馆之城」"],
+    ],
+    notes: [
+      "宏大表皮与克制展厅必须形成强反差：上方是极致复杂的星纹网壳，下方展馆则保持纯白直角宁静",
+      "地域文化符号（传统阿拉伯星纹）应通过结构力学与光影物理转译，绝不流于表面贴花",
+    ],
+    sourceUrl: "https://www.louvreabudhabi.ae/en/about-us/architecture",
+  },
+  {
+    key: "AW-3",
+    category: "industrial",
+    title: "Herman Miller Aeron · 人体工学椅工业设计圣杯",
+    domain: "工业设计 · IDSA 十年最佳设计 / MoMA 永久馆藏",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["IDSA", "MoMA", "工业设计"],
+    essence: "Don Chadwick 与 Bill Stumpf 彻底颠覆百年办公椅的「泡棉 + 皮革」范式：以高弹力 Pellicle 悬浮编织网膜与裸露压铸铝骨架开创透明工业美学，入选 MoMA 永久馆藏并斩获 IDSA 十年最佳工业设计大奖。",
+    dna: [
+      ["奖项含金量", "IDSA Design of the Decade / Good Design Award / 纽约 MoMA 永久馆藏"],
+      ["材质革命", "8Z Pellicle 分区张力悬浮网膜取代海绵，解决久坐闷热与局部压迫两大根因"],
+      ["诚实结构美学", "压铸铝底盘、Kinemat 同步倾仰机构与腰托完全外露，机械逻辑即视觉雕塑"],
+      ["全尺寸体系", "按人体工学分 A / B / C 三种精确尺码，90%+ 可回收再生海洋塑料与金属部件"],
+    ],
+    notes: [
+      "真正的工业设计经典从功能痛点长出造型：Aeron 的辨识度来自网面张力框架，而非装饰线条",
+      "金属与织物交界处的倒角、螺钉沉孔与表面喷砂粒度决定整件工业品的精密质感",
+    ],
+    sourceUrl: "https://www.hermanmiller.com/products/seating/office-chairs/aeron-chairs/",
+  },
+  {
+    key: "AW-4",
+    category: "industrial",
+    title: "Leica M11 / M 系列旁轴相机 · 德系精密工业典范",
+    domain: "工业设计 · Red Dot 红点至尊 / iF Design Gold 家族",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["Red Dot", "iF Gold", "工业设计"],
+    essence: "百年旁轴相机的工业设计活化石：整块黄铜/铝材 CNC 铣削顶盖、极简物理快门拨盘与可乐标红点比例，以「只保留摄影必需控件」的极端克制屡获 Red Dot、iF 与德国设计奖殊荣。",
+    dna: [
+      ["奖项含金量", "Red Dot Award / iF Design Award / German Design Award 精密光学工业标杆"],
+      ["精密金属加工", "整块实心金属 CNC 切削顶盖 + 荔枝纹 Vulcanite 蒙皮，冷暖双材质对比触感"],
+      ["人机阻尼契约", "光圈环 1/3 档机械咔嗒感、对焦环黄铜螺旋丝滑阻尼与零菜单依赖的物理拨盘"],
+      ["比例与视觉锚点", "椭圆跑道机身两端半圆收口 + 右上极小红点视觉重心，70 年演化保持家族基因"],
+    ],
+    notes: [
+      "高端精密硬件做减法比做加法难十倍：取消模式转盘与多余按键，让金属表面留白呼吸",
+      "雕刻填漆字符（快门速度、景深标尺）必须采用高对比无衬线等宽刻度，保证弱光可读性",
+    ],
+    sourceUrl: "https://leica-camera.com/en-int/photography/cameras/m/m11-black",
+  },
+  {
+    key: "AW-5",
+    category: "art",
+    title: "teamLab Borderless · 无界数字交互美术馆",
+    domain: "美术与数字艺术 · THEA 杰出成就奖 / DFA 亚洲设计大奖",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["THEA Award", "DFA", "数字美术"],
+    essence: "斩获全球主题娱乐奥斯卡 THEA Award 与 DFA 亚洲最具影响力设计大奖。打破画框与展厅边界，让由实时算法生成的花海、巨浪与光瀑在不同房间间自由迁徙，并随观者触碰实时演化永不重复。",
+    dna: [
+      ["奖项含金量", "THEA Award for Outstanding Achievement / DFA Design for Asia Grand Award / 吉尼斯单一艺术团队最高参观纪录"],
+      ["无边界画布", "地面、墙面、镜面与天花板全向投影融合，彻底消除建筑转角与物理边界感"],
+      ["实时算法生成", "非预渲染循环视频，而是基于数百台服务器实时计算的流体、粒子与花开花谢物理系统"],
+      ["高饱和暗场对比", "极黑吸光空间衬托高纯度群青、霓虹洋红与鎏金光粒，观者剪影自然融入画面构图"],
+    ],
+    notes: [
+      "沉浸式数字艺术绝不能沦为循环播放的巨幕视频，必须建立「观众动作 → 画面物理响应」的因果闭环",
+      "暗场投影空间必须严格控制地面眩光与设备穿帮，让光源本身成为唯一空间尺标",
+    ],
+    sourceUrl: "https://www.teamlab.art/e/borderless-azabudai/",
+  },
+  {
+    key: "AW-6",
+    category: "art",
+    title: "Anish Kapoor ·《云门 Cloud Gate》（芝加哥千禧公园）",
+    domain: "美术与公共雕塑 · 英国特纳奖大师巅峰作品",
+    status: "vault",
+    priority: 2,
+    starred: true,
+    labels: ["Turner Prize", "公共美术", "镜面雕塑"],
+    essence: "英国特纳奖（Turner Prize）得主安尼施·卡普尔的全球公共美术地标：110 吨重、由 168 块不锈钢板精密焊接并打磨至零焊缝的液态汞曲面，将整座芝加哥天际线与人群折入魔幻的光学漩涡。",
+    dna: [
+      ["奖项含金量", "Turner Prize 大师代表作 / AIA 城市空间荣誉 / 当代全球最具辨识度公共艺术雕塑"],
+      ["零焊缝镜面工艺", "168 块 3/8 英寸不锈钢板在内部桁架上多阶段抛光，实现无接缝液态金属反射"],
+      ["双曲光学魔术", "外凸曲面全景广角压缩城市天际线，底部 3.7 米高「脐眼 Omphalos」拱顶产生多重无限倒影"],
+      ["环境共生策略", "作品自身无固定色彩，随晴雨、日落、冬雪与人群衣着实时生成千变万化的天然画作"],
+    ],
+    notes: [
+      "极简雕塑的高级感来源于「不可能的工艺精度」：只要出现一条可见焊缝或橘皮波纹，液态错觉瞬间破功",
+      "公共艺术设计应预留「可走入其下」的互动拱洞，让观者从旁观者变为画中主角",
+    ],
+    sourceUrl: "https://anishkapoor.com/110/cloud-gate",
+  },
+  {
+    key: "AW-7",
+    category: "render",
+    title: "Blender Studio《Cosmos Laundromat》&《Charge》",
+    domain: "3D 渲染与 CG · SIGGRAPH Best in Show & Electronic Theater",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["SIGGRAPH", "Cycles PBR", "3D 渲染"],
+    essence: "开源 3D 渲染的里程碑级官方电影：《Cosmos Laundromat》勇夺 SIGGRAPH 2016 电子剧场「Best in Show 最佳影片」，《Charge》入选 SIGGRAPH 2023，全面展现 Cycles 路径追踪在写实光影、毛发、体积雾与硬表面金属上的电影级极限。",
+    dna: [
+      ["奖项含金量", "SIGGRAPH Electronic Theater Best in Show（2016）& Official Selection（2023）"],
+      ["物理路径追踪", "Blender Cycles 全局光照 + Filmic / AgX 广色域色调映射，高光滚落自然不死白"],
+      ["极致材质层次", "《Charge》展示工业废土油污、划痕金属与潮湿反光地面；《Cosmos》展示百万级羊毛次表面散射"],
+      ["电影级构图光比", "2.39:1 变形宽银幕画幅，严格执行冷暖主辅光分离与大气景深透视（Aerial Perspective）"],
+    ],
+    notes: [
+      "写实 3D 渲染最忌「太干净」：金属与墙面必须叠加微划痕 Roughness 贴图、边缘磨损与环境光遮蔽（AO）",
+      "电影级光影核心在于暗部层次与色调映射（AgX），而非盲目拉高整体亮度",
+    ],
+    sourceUrl: "https://studio.blender.org/films/cosmos-laundromat/",
+  },
+  {
+    key: "AW-8",
+    category: "render",
+    title: "《Littlest Tokyo》×《Abandoned Warehouse》实时 PBR 3D 渲染",
+    domain: "3D 渲染与实时引擎 · Sketchfab 全球年度最高赞 Staff Pick",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["Sketchfab Pick", "WebGL PBR", "3D 渲染"],
+    essence: "Sketchfab 全球殿堂级 Staff Pick 标杆（《Littlest Tokyo》近 9,000 赞、Three.js 官方示例常客，搭配《Abandoned Warehouse》写实光照摄影测量场景），定义浏览器实时 3D 渲染的风格化微缩与写实光影双天花板。",
+    dna: [
+      ["奖项含金量", "Sketchfab Staff Pick 全球历史最高赞实时 3D 场景 / Three.js 官方性能展示标杆"],
+      ["风格化微缩叙事", "Glen Fox《Littlest Tokyo》用紧凑微缩街区、轨道电车循环动画与手绘烘焙 GI 营造宫崎骏式生机"],
+      ["写实烘焙光照", "《Abandoned Warehouse》通过真实光影贴图、破窗体积光柱与混凝土粗糙度贴图达成照片级 WebGL 渲染"],
+      ["实时性能纪律", "严格控制 Draw Call、纹理图集（Texture Atlas）与法线烘焙，手机浏览器也能 60fps 流畅旋转"],
+    ],
+    notes: [
+      "实时 Web 3D 渲染靠「烘焙光照（Baked GI）+ 精准粗糙度贴图」在极低算力下赢过暴力实时光追",
+      "微缩场景必须设计 1–2 个持续循环的小动态元素（行驶电车、飘动旗帜）让静态模型瞬间活起来",
+    ],
+    sourceUrl: "https://sketchfab.com/3d-models/littlest-tokyo-94b24a60dc1b48248de50bf087c0f042",
+  },
+  {
+    key: "AW-9",
+    category: "spatial",
+    title: "赫尔辛基颂歌中央图书馆 Oodi · ALA Architects",
+    domain: "空间与公共建筑 · IFLA 全球年度最佳公共图书馆 / 欧盟密斯奖入围",
+    status: "vault",
+    priority: 2,
+    starred: false,
+    labels: ["IFLA Winner", "Mies Award", "空间设计"],
+    essence: "荣获 IFLA「全球年度最佳公共图书馆」并入围欧盟最高建筑奖密斯·凡·德·罗奖。建筑师以两道百米级钢拱桥托起整栋三层建筑，把「喧闹市民广场 → 创客工坊 → 宁静云端书海」垂直叠层为北欧公共空间的完美样本。",
+    dna: [
+      ["奖项含金量", "IFLA Public Library of the Year 2019 / EU Mies van der Rohe Award Finalist"],
+      ["钢桥悬挑木立面", "芬兰云杉弧形木立面如海浪腾空挑出，下方自然围合出防风遮雨的半户外入口广场"],
+      ["三层声学分层", "1F 开放活动与影院 → 2F 3D 打印/录音/缝纫创客夹层 → 3F 360° 全景落地窗「书之天堂」"],
+      ["北欧暖木 × 极白", "原木温润弧顶搭配纯白波浪天花板与圆形天窗，在北欧漫长冬日最大化引入自然漫射光"],
+    ],
+    notes: [
+      "当代公共空间设计不再是单一功能盒子，而是通过垂直动线把「吵闹社交」与「静谧专注」自然隔层",
+      "大尺度木构立面需经由参数化预制拼装控制曲率误差，同时兼顾高纬度严寒气候的保温节点",
+    ],
+    sourceUrl: "https://oodihelsinki.fi/en/what-is-oodi/architecture/",
+  },
+  {
+    key: "AW-10",
+    category: "spatial",
+    title: "新加坡星耀樟宜 Jewel Changi · Moshe Safdie",
+    domain: "空间与展陈地标 · MAPIC 全球最佳商业空间 / 国际建筑大奖",
+    status: "vault",
+    priority: 2,
+    starred: false,
+    labels: ["IAA Award", "MAPIC", "空间展陈"],
+    essence: "建筑大师摩西·萨夫迪将「热带植物园 + 40 米室内雨漩涡瀑布 + 轻轨穿行 + 立体商业展陈」熔铸在一颗环状钢玻璃网格穹顶之中，重构了全球交通枢纽与大型商业公共空间的想象力上限。",
+    dna: [
+      ["奖项含金量", "MAPIC Best Retail Architecture / International Architecture Award / 全球地标性室内空间典范"],
+      ["环状玻璃网格穹顶", "9,000+ 块定制三角形低辐射玻璃构成无柱环形穹顶，中央开口汇聚天然雨水倾泻而下"],
+      ["40 米雨漩涡视觉锚", "全球最高室内瀑布居中贯通 7 层空间，四周层叠梯田式热带雨林步道自然引导人流上行"],
+      ["动态叙事景别", "机场高架轻轨直接从瀑布侧翼玻璃桥缓缓穿行，赋予静态建筑持续流动的未来感镜头"],
+    ],
+    notes: [
+      "超大型中庭空间必须有一个贯穿全楼层的超级视觉锚点（Hero Anchor），让访客在任意楼层都能建立方向感",
+      "植物、水雾与建筑玻璃必须统筹湿度、声学与防结露机电工程，景观美学背后是精密环境控制",
+    ],
+    sourceUrl: "https://www.safdiearchitects.com/projects/jewel-changi-airport",
+  },
+];
+
+const PRODUCT_3D_BOARDS = [
+  {
+    key: "P3D-1",
+    category: "product3d",
+    subKind: "phone",
+    title: "Apple iPhone 16 Pro / 15 Pro 钛金属 · 3D 商品展板",
+    domain: "商品 3D 展板 / 手机数码 · Sketchfab 360° 交互",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["商品 3D 展板", "手机数码", "PBR 钛金属"],
+    essence: "旗舰智能手机 3D 商品展示与材质拆解标杆：5 级航空钛金属微拉丝中框、超瓷晶哑光背板与三摄蓝宝石镜片多层镀膜反射，点击「打开来源」可直接在浏览器 360° 交互检视完整 3D 模型。",
+    dna: [
+      ["中框 PBR 参数", "Brushed Titanium 金属度 0.92 / 各向异性拉丝 Roughness 0.28–0.36，微弧倒角捕捉极细高光边"],
+      ["光学三摄细节", "蓝宝石盖板 Clearcoat 1.0 + IOR 1.77，内嵌紫/青光学增透镀膜与深黑遮光阶梯环"],
+      ["影棚布光配方", "暗夜黑曜石摄影棚 + 两侧窄长条柔光箱（Strip Light），精准勾勒钛金属轮廓线而不发灰"],
+      ["展板构图规范", "16:9 居中三视图 + 45° 英雄角（Hero Angle）主视觉，预留左侧 35% 暗场承接规格参数排印"],
+    ],
+    notes: [
+      "手机 3D 展板严禁使用平铺环境光导致金属变塑料，必须靠高对比窄条反射板拉出锋利高光渐变",
+      "镜头模组玻璃下方必须建出真实内部镜筒与光圈叶片，贴图假反射会在旋转 3D 时立刻露馅",
+    ],
+    sourceUrl: "https://sketchfab.com/3d-models/iphone-16-pro-max-41a071ae12794b668502f58d1e0fd1a3",
+  },
+  {
+    key: "P3D-2",
+    category: "product3d",
+    subKind: "car",
+    title: "Porsche 911 GT3 / 930 Turbo 旗舰跑车 · 3D 汽车展板",
+    domain: "商品 3D 展板 / 汽车出行 · Sketchfab 360° 交互",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["商品 3D 展板", "汽车出行", "Clearcoat 车漆"],
+    essence: "汽车工业级 3D 展板双标杆（现代 911 GT3 鹅颈大尾翼 + 7,300+ 赞经典 930 Turbo）：完整演绎双层金属车漆 Clearcoat、空气动力学溜背反光线、锻造轮毂刹车卡钳与暗棚汽车摄影打光。",
+    dna: [
+      ["双层车漆 Shader", "底层金属颗粒漆（Metallic Flake）+ 顶层清漆（Clearcoat 1.0 / Roughness 0.04），曲面高光如液态流淌"],
+      ["经典轮廓流线", "青蛙眼大灯、宽体后翼子板与天鹅颈 GT3 尾翼构成极具速度张力的三段式腰线反光带"],
+      ["轮毂与碳陶刹车", "镂空中心锁止锻造轮毂、打孔碳陶刹车盘与高饱和卡钳，近景细节支撑工业级展板特写"],
+      ["展厅摄影机位", "低机位 85mm 长焦视角（消除广角畸变），配合顶部超大漫射灯箱拉出贯穿车顶至尾翼的连续光带"],
+    ],
+    notes: [
+      "汽车 3D 渲染必须使用 70–100mm 等效长焦镜头，广角会让车头比例严重失真显得廉价",
+      "地面必须加入极细腻的接触阴影（Contact Shadow）与微弱镜面反射，防止车身像漂浮在空中",
+    ],
+    sourceUrl: "https://sketchfab.com/3d-models/porsche-911-gt3-593c83f3662a4a45a016f95dedd9f243",
+  },
+  {
+    key: "P3D-3",
+    category: "product3d",
+    subKind: "cnc",
+    title: "五轴 CNC 精密数控加工中心 & 车铣复合机床 · 3D 工业展板",
+    domain: "商品 3D 展板 / 工业机床 · Sketchfab 360° 交互",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["商品 3D 展板", "工业机床", "硬表面 CAD"],
+    essence: "重工业高端装备 3D 展板典范：涵盖精密数控车床 3D 整机、DMG 五轴联动加工中心实机结构与独立 CNC 工业数控面板 3D 模型，精准展现工业烤漆钣金、防爆视窗、高刚性铸铁床身与警示工业人机界面。",
+    dna: [
+      ["工业装备配色系统", "冰川灰白工业烤漆（#E6E9EE）× 深石墨铸铁底盘（#23272E）× 安全急停红/信号蓝精准功能色"],
+      ["硬表面工程细节", "滚珠丝杠、线性导轨、三爪卡盘、刀塔与防切削液观察窗，结构比例严格遵循真实 CAD 装配公差"],
+      ["人机数控面板", "斜角悬臂操控台：高对比 LCD 坐标屏、薄膜防水按键矩阵、急停蘑菇头与手轮脉冲编码器"],
+      ["展板信息层级", "整机等轴测 3D 视图 + 透明剖切主轴结构 + 核心加工精度参数（±0.002mm / 五轴联动）"],
+    ],
+    notes: [
+      "工业机床 3D 展板必须体现「重量感与精度感」：钣金折弯处保持 1–2mm 锐利工业倒角，严禁圆润卡通化",
+      "警示标识、铭牌与数控屏幕界面文字必须清晰锐利，它是区分真工业级展板与粗糙低模的关键分水岭",
+    ],
+    sourceUrl: "https://sketchfab.com/3d-models/turning-lathe-cnc-cormak-703388fd52ee424e8c0ad2d8dc662090",
+  },
+  {
+    key: "P3D-4",
+    category: "product3d",
+    subKind: "robot",
+    title: "KUMA Heavy Robot R-9000S 六轴工业机械臂 · 3D 展板",
+    domain: "商品 3D 展板 / 工业装备 · Sketchfab 1,986 赞 Staff Pick",
+    status: "vault",
+    priority: 1,
+    starred: true,
+    labels: ["商品 3D 展板", "工业装备", "六轴机械臂"],
+    essence: "近 2,000 赞硬表面机械设计标杆：高负载六轴工业机械臂的液压管线、谐波减速器关节、伺服电机外壳与双色工业涂装（冷白 × 工业橙），搭配真实 CNC 机械臂自动化产线对照，堪称工业装备 3D 展板教科书。",
+    dna: [
+      ["工业安全撞色", "高明度工业白/石墨灰主体 + 高可视警戒橙（#FF5A1F）与黑色防尘风琴罩、柔性拖链管线"],
+      ["运动学关节结构", "6 个独立旋转轴（J1–J6）配真实螺栓法兰、伺服散热鳍片与末端夹爪执行器"],
+      ["材质磨损层次", "粉末喷涂微颗粒橘皮质感 + 关节连接处轻微机油光泽与边缘漆面磨损，极具硬核制造感"],
+      ["动态展板呈现", "静态等轴测展板 + 工作半径包络虚线标注 + 关节自由度与重复定位精度技术卡片"],
+    ],
+    notes: [
+      "工业机械臂建模最怕关节处「插穿悬空」，必须交代清楚伺服电机座、电缆穿线孔与限位挡块",
+      "纯色高饱和背景（如深橘/浅灰摄影无缝纸）能极大强化工业机械轮廓剪影的视觉冲击力",
+    ],
+    sourceUrl: "https://sketchfab.com/3d-models/kuma-heavy-robot-r-9000s-8b77bdbe705f4e9697790fd404da49a9",
+  },
+  {
+    key: "P3D-5",
+    category: "product3d",
+    subKind: "watch",
+    title: "瑞士陀飞轮镂空机械腕表 · 3D 精密微距展板",
+    domain: "商品 3D 展板 / 精密腕表 · Roger Dubuis × Greubel Forsey",
+    status: "vault",
+    priority: 2,
+    starred: true,
+    labels: ["商品 3D 展板", "精密腕表", "微距 PBR"],
+    essence: "高端奢侈消费品 3D 微距展板巅峰：融合 Roger Dubuis 锻造碳镂空机械表 3D 模型与 Greubel Forsey 倾斜陀飞轮微距机芯工艺，精密演绎蓝宝石防眩表镜、倒角拉丝夹板与多层级咬合齿轮。",
+    dna: [
+      ["蓝宝石玻璃光学", "双面镀膜蓝宝石水晶（IOR 1.77 + 微弱淡蓝防眩反射），倾斜视角下依然通透看清机芯纵深"],
+      ["微距金属精饰", "日内瓦波纹（Côtes de Genève）、鱼鳞纹打磨、倒角镜面抛光与蓝钢螺丝多重各向异性高光"],
+      ["镂空多层景深", "表针 → 刻度悬浮环 → 镂空发条盒与陀飞轮框架 → 底层夹板，4 层机械纵深构成视觉奇观"],
+      ["微距打光纪律", "极小面积硬光勾勒齿轮齿尖金光 + 暗场柔光压暗表壳侧面，营造瑞士高定珠宝级高级氛围"],
+    ],
+    notes: [
+      "腕表 3D 展板时间指针行业惯例定格在 10:10 左右，形成对称微笑夹角并完整露出 12 点位品牌徽标与 6 点位陀飞轮",
+      "金属齿轮与宝石轴承（红宝石合成刚玉）需要独立的微尺度 PBR 材质球，不可共用单一金属材质",
+    ],
+    sourceUrl: "https://sketchfab.com/3d-models/roger-dubuis-lamborghini-huracan-black-by-sdc-2acdfee4bd2c46619a8e83ba08c60af9",
+  },
+];
+
 export function buildSeedItems() {
   const now = Date.now();
+  const awards = WORLD_AWARDS.map((a, i) => ({
+    id: a.key.toLowerCase(),
+    type: "award",
+    ...a,
+    notesLabel: "设计精髓 & 避坑",
+    updatedAt: now - i * 1800_000,
+  }));
+
+  const product3d = PRODUCT_3D_BOARDS.map((p, i) => ({
+    id: p.key.toLowerCase(),
+    type: "product3d",
+    ...p,
+    notesLabel: "3D 展板规范",
+    updatedAt: now - (i + 10) * 1800_000,
+  }));
+
   const benchmarks = BENCHMARKS.map((b, i) => ({
     id: b.key.toLowerCase(),
     type: "benchmark",
     ...b,
     notesLabel: "红线 DON'T",
     sourceUrl: b.vault ? `./design-vault/${b.vault}/DESIGN.md` : "",
-    updatedAt: now - i * 3600_000,
+    updatedAt: now - (i + 20) * 3600_000,
   }));
 
   const theories = THEORIES.map((t, i) => ({
@@ -988,5 +1376,5 @@ export function buildSeedItems() {
     updatedAt: now - (i + 60) * 3600_000,
   }));
 
-  return [...benchmarks, ...theories, ...aiwebs, ...fable, ...claudeExtra, ...otherModels];
+  return [...awards, ...product3d, ...benchmarks, ...theories, ...aiwebs, ...fable, ...claudeExtra, ...otherModels];
 }
