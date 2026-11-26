@@ -1,0 +1,20 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#08090A"/>
+      <text x="36" y="44" fill="#8A8F98" font-family="monospace" font-size="13">ANTI-SHORTCUT ENGINEERING CONTRACT (FABLE 5.2 MAX EFFORT)</text>
+      <rect x="36" y="72" width="272" height="284" rx="8" fill="#191114" stroke="rgba(235,87,87,0.4)"/>
+      <text x="56" y="106" fill="#EB5757" font-family="monospace" font-size="14" font-weight="700">✕ 禁止捷径（常见弱模型通病）</text>
+      <g fill="#D2D5DA" font-family="sans-serif" font-size="13">
+        <text x="56" y="146">• 注释掉报错头文件强行编译通过</text>
+        <text x="56" y="182">• 给失败的系统调用写假 return 0</text>
+        <text x="56" y="218">• 放宽或跳过回归测试断言</text>
+        <text x="56" y="254">• 30 轮后遗忘前面修改的 ABI 约定</text>
+      </g>
+      <rect x="332" y="72" width="272" height="284" rx="8" fill="#0E1914" stroke="rgba(76,183,130,0.45)"/>
+      <text x="352" y="106" fill="#4CB782" font-family="monospace" font-size="14" font-weight="700">✓ FABLE 5.2 长程实测表现</text>
+      <g fill="#E2F5EB" font-family="sans-serif" font-size="13">
+        <text x="352" y="146">• 逐层排查真实编译树与符号依赖</text>
+        <text x="352" y="182">• 维护 MIGRATION_LOG 锁死假设</text>
+        <text x="352" y="218">• 每个补丁跑真实二进制验收</text>
+        <text x="352" y="254">• 配合 Prompt Cache 成本暴降</text>
+      </g>
+    </svg>

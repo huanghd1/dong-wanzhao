@@ -1,0 +1,15 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#0B0C0E"/>
+      <text x="36" y="44" fill="#8A8F98" font-family="monospace" font-size="13">TOKEN ECONOMY // SINGLE FRONTIER vs BATON ROUTING</text>
+      <text x="36" y="106" fill="#B4B8BF" font-family="sans-serif" font-size="14">全程单跑最贵模型（规划 + 体力活全包）</text>
+      <rect x="36" y="122" width="540" height="36" rx="6" fill="#2A1C1E" stroke="#EB5757"/>
+      <text x="52" y="145" fill="#F7F8F8" font-family="monospace" font-size="13">100% COST · $8/M in · $40/M out</text>
+      <text x="36" y="212" fill="#F7F8F8" font-family="sans-serif" font-size="14" font-weight="700">Fable Baton 接力路由（Fable 定盘 + 高速模型执行 + Cache 复用）</text>
+      <rect x="36" y="228" width="110" height="36" rx="6" fill="#5E6AD2"/>
+      <rect x="150" y="228" width="94" height="36" rx="6" fill="#4CB782"/>
+      <text x="50" y="251" fill="#FFFFFF" font-family="monospace" font-size="12">PLAN</text>
+      <text x="164" y="251" fill="#08090A" font-family="monospace" font-size="12" font-weight="700">WORK</text>
+      <text x="260" y="251" fill="#4CB782" font-family="monospace" font-size="14" font-weight="700">-55% ~ -70% 总成本</text>
+      <rect x="36" y="302" width="568" height="58" rx="6" fill="#161718" stroke="rgba(255,255,255,0.1)"/>
+      <text x="54" y="336" fill="#00D4FF" font-family="monospace" font-size="12.5">Prompt Cache Read: $0.20 / 1M tokens — 1M 长上下文反复审稿几乎零成本</text>
+    </svg>

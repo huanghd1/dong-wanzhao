@@ -1,0 +1,15 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#08090A"/>
+      <text x="36" y="44" fill="#8A8F98" font-family="monospace" font-size="13">HANDOFF CONTRACT // WHAT MAKES WORKERS HIT 90+ QUALITY</text>
+      <g font-family="monospace" font-size="12.5">
+        <rect x="36" y="76" width="568" height="82" rx="8" fill="#161718" stroke="rgba(255,255,255,0.12)"/>
+        <text x="56" y="108" fill="#9EA6F5" font-weight="700">01 · SPEC.md（冻结接口与边界）</text>
+        <text x="56" y="134" fill="#B4B8BF">明确输入输出、数据结构与禁止改动范围，消灭子 Agent 自由发挥跑偏</text>
+        <rect x="36" y="174" width="568" height="82" rx="8" fill="#161718" stroke="rgba(255,255,255,0.12)"/>
+        <text x="56" y="206" fill="#00D4FF" font-weight="700">02 · DESIGN.md + tokens.css（视觉硬契约）</text>
+        <text x="56" y="232" fill="#B4B8BF">直接复用个人设计库里的 LCH / Stripe 母本，跨模块 UI 零割裂</text>
+        <rect x="36" y="272" width="568" height="82" rx="8" fill="#0F1B15" stroke="#4CB782"/>
+        <text x="56" y="304" fill="#4CB782" font-weight="700">03 · VERIFY GATE（机器可验证门禁）</text>
+        <text x="56" y="330" fill="#D2E8DC">附带真实测试命令 + 浏览器截图对比，绝不轻信口头“已完成”</text>
+      </g>
+    </svg>

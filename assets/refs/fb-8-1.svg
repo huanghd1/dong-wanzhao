@@ -1,0 +1,29 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="640" height="400" fill="#08090A"/>
+      <text x="36" y="44" fill="#8A8F98" font-family="monospace" font-size="13">OH-MY-FABLE / FABLE-BATON // MULTI-MODEL RELAY TOPOLOGY</text>
+      <g stroke="#5E6AD2" stroke-width="2" fill="none">
+        <path d="M192 200 C236 200, 240 108, 286 108"/>
+        <path d="M192 200 H286"/>
+        <path d="M192 200 C236 200, 240 292, 286 292"/>
+      </g>
+      <g stroke="#4CB782" stroke-width="2" fill="none">
+        <path d="M446 108 C482 108, 486 200, 514 200"/>
+        <path d="M446 200 H514"/>
+        <path d="M446 292 C482 292, 486 200, 514 200"/>
+      </g>
+      <rect x="32" y="146" width="160" height="108" rx="10" fill="rgba(94,106,210,0.2)" stroke="#7A73FF" stroke-width="1.6"/>
+      <text x="50" y="184" fill="#9EA6F5" font-family="monospace" font-size="14" font-weight="700">FABLE 5.2</text>
+      <text x="50" y="206" fill="#F7F8F8" font-family="sans-serif" font-size="13">首席架构规划</text>
+      <text x="50" y="228" fill="#8A8F98" font-family="monospace" font-size="11">SPEC + DESIGN.md</text>
+      <g font-family="monospace">
+        <rect x="286" y="76" width="160" height="64" rx="8" fill="#161718" stroke="rgba(255,255,255,0.16)"/>
+        <text x="304" y="104" fill="#F7F8F8" font-size="13" font-weight="700">WORKER 01</text><text x="304" y="124" fill="#8A8F98" font-size="11">UI &amp; Tokens</text>
+        <rect x="286" y="168" width="160" height="64" rx="8" fill="#161718" stroke="rgba(255,255,255,0.16)"/>
+        <text x="304" y="196" fill="#F7F8F8" font-size="13" font-weight="700">WORKER 02</text><text x="304" y="216" fill="#8A8F98" font-size="11">API &amp; State</text>
+        <rect x="286" y="260" width="160" height="64" rx="8" fill="#161718" stroke="rgba(255,255,255,0.16)"/>
+        <text x="304" y="288" fill="#F7F8F8" font-size="13" font-weight="700">WORKER 03</text><text x="304" y="308" fill="#8A8F98" font-size="11">Tests &amp; Verify</text>
+      </g>
+      <rect x="514" y="146" width="96" height="108" rx="10" fill="#0F1D16" stroke="#4CB782" stroke-width="1.6"/>
+      <text x="532" y="190" fill="#4CB782" font-family="monospace" font-size="14" font-weight="700">GATE ✓</text>
+      <text x="530" y="214" fill="#B4B8BF" font-family="sans-serif" font-size="12">总审收口</text>
+    </svg>
