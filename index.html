@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Design Vault · 01 Linear 精密工作台</title>
+  <meta name="description" content="以 01 · Linear 设计母本构建的键盘优先个人设计应用库工作台。">
+  <link rel="stylesheet" href="./design-vault/linear-01/tokens.css">
+  <link rel="stylesheet" href="./src/linear/linear.css?v=9">
+</head>
+<body>
+  <a class="skip-link" href="#item-list">跳至条目列表</a>
+
+  <div class="app-shell" id="app-shell">
+    <!-- ============ Sidebar / Mobile Navigation Drawer ============ -->
+    <aside class="sidebar" id="sidebar-drawer" popover="manual" aria-label="工作区导航">
+      <div class="drawer-scroller" id="drawer-scroller">
+        <div class="drawer-sheet" id="drawer-sheet">
+          <div class="workspace">
+            <span class="workspace-mark" aria-hidden="true">DV</span>
+            <span class="workspace-name">Design Vault</span>
+            <span class="workspace-tag">LINEAR-01</span>
+            <button type="button" class="ghost-btn drawer-close-btn" id="drawer-close-btn" aria-label="关闭导航菜单" autofocus>✕</button>
+          </div>
+
+          <button type="button" class="search-trigger" id="open-palette-btn">
+            <span aria-hidden="true">⌕</span>
+            <span>搜索或执行命令…</span>
+            <kbd class="kbd" id="mod-key-hint">⌘K</kbd>
+          </button>
+
+          <nav aria-label="视图">
+            <p class="nav-heading">视图</p>
+            <ul id="view-nav" class="nav-list"></ul>
+          </nav>
+
+          <nav aria-label="设计母本库">
+            <p class="nav-heading">母本文件</p>
+            <ul class="nav-list">
+              <li><a class="nav-item" href="./design-vault/linear-01/DESIGN.md" target="_blank" rel="noopener"><span class="nav-icon" aria-hidden="true">◆</span>linear-01 / DESIGN.md</a></li>
+              <li><a class="nav-item" href="./design-vault/stripe-02/DESIGN.md" target="_blank" rel="noopener"><span class="nav-icon" aria-hidden="true">◆</span>stripe-02 / DESIGN.md</a></li>
+              <li><a class="nav-item" href="./stripe.html"><span class="nav-icon" aria-hidden="true">↗</span>Stripe 风格作品站</a></li>
+            </ul>
+          </nav>
+
+          <div class="sidebar-foot">
+            <button type="button" class="ghost-btn" id="open-shortcuts-btn">
+              键盘快捷键 <kbd class="kbd">?</kbd>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ Main list ============ -->
+    <main class="main" id="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button
+            type="button"
+            class="ghost-btn mobile-menu-btn"
+            id="mobile-menu-btn"
+            aria-label="打开导航菜单"
+            aria-expanded="false"
+            aria-controls="sidebar-drawer"
+          >
+            <span aria-hidden="true">☰</span>
+          </button>
+          <h1 class="view-title" id="view-title">全部条目</h1>
+          <span class="count-chip" id="view-count">0</span>
+        </div>
+
+        <div class="header-right">
+          <label for="filter-input" class="sr-only">筛选条目</label>
+          <div class="filter-box">
+            <span aria-hidden="true" class="filter-icon">⌕</span>
+            <input id="filter-input" type="search" placeholder="筛选…" autocomplete="off">
+            <kbd class="kbd">/</kbd>
+          </div>
+          <span class="latency" id="latency-hud" title="上次重绘耗时">⚡ 0.0 ms</span>
+          <button type="button" class="primary-btn" id="create-btn">
+            新建 <kbd class="kbd kbd-on-accent">C</kbd>
+          </button>
+        </div>
+      </header>
+
+      <div class="daily-bar" id="daily-bar" hidden></div>
+
+      <div
+        class="item-list"
+        id="item-list"
+        role="listbox"
+        tabindex="0"
+        aria-label="设计条目"
+      ></div>
+
+      <footer class="list-hint" aria-hidden="true">
+        <span><kbd class="kbd">J</kbd><kbd class="kbd">K</kbd> 移动</span>
+        <span><kbd class="kbd">↵</kbd> 打开</span>
+        <span><kbd class="kbd">1</kbd>–<kbd class="kbd">5</kbd> 状态</span>
+        <span><kbd class="kbd">S</kbd> 加星</span>
+        <span><kbd class="kbd">G</kbd> 然后 <kbd class="kbd">B</kbd> 跳转</span>
+        <span><kbd class="kbd">⌘Z</kbd> 撤销</span>
+      </footer>
+    </main>
+
+    <!-- ============ Inspector ============ -->
+    <aside class="inspector" id="inspector" aria-label="条目详情" hidden></aside>
+  </div>
+
+  <!-- ============ Command palette ============ -->
+  <dialog id="palette" class="lin-dialog palette" closedby="any" aria-label="命令面板">
+    <div class="palette-input-row">
+      <span class="palette-context" id="palette-context">Design Vault</span>
+      <label for="palette-input" class="sr-only">输入命令或搜索条目</label>
+      <input
+        id="palette-input"
+        type="text"
+        role="combobox"
+        aria-expanded="true"
+        aria-controls="palette-list"
+        aria-autocomplete="list"
+        autocomplete="off"
+        placeholder="输入命令或搜索…"
+      >
+    </div>
+    <ul id="palette-list" class="palette-list" role="listbox" aria-label="命令结果"></ul>
+    <div class="palette-foot" aria-hidden="true">
+      <span><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> 选择</span>
+      <span><kbd class="kbd">↵</kbd> 执行</span>
+      <span><kbd class="kbd">Esc</kbd> 关闭</span>
+    </div>
+  </dialog>
+
+  <!-- ============ Create dialog ============ -->
+  <dialog id="create-dialog" class="lin-dialog create-dialog" closedby="any" aria-labelledby="create-title">
+    <form id="create-form" method="dialog">
+      <div class="dialog-head">
+        <h1 id="create-title" class="dialog-title">新建设计条目</h1>
+        <button type="button" class="ghost-btn" id="create-close">关闭 <kbd class="kbd">Esc</kbd></button>
+      </div>
+      <div class="dialog-body">
+        <label class="field">
+          <span>标题</span>
+          <input name="title" type="text" required autofocus placeholder="例如：Things 3 · 安静的任务管理">
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>类型</span>
+            <select name="type">
+              <option value="daily">每日 AI 精选</option>
+              <option value="benchmark">设计母本</option>
+              <option value="theory">经典理念与著作</option>
+              <option value="aiweb">AI 网页与设计</option>
+              <option value="fable">Claude 优秀作品</option>
+              <option value="othermodel">其他模型优秀作品</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>状态</span>
+            <select name="status" id="create-status"></select>
+          </label>
+        </div>
+        <div class="field-row">
+          <label class="field">
+            <span>品类（自动归类）</span>
+            <select name="category">
+              <option value="">自动 / 不指定</option>
+              <option value="web">网页</option>
+              <option value="game">游戏</option>
+              <option value="design">设计</option>
+              <option value="product">产品</option>
+              <option value="app">App</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>所属模型</span>
+            <input name="modelName" type="text" placeholder="例如：Claude Fable 5.2 / Gemini 4 Neon">
+          </label>
+        </div>
+        <label class="field">
+          <span>领域</span>
+          <input name="domain" type="text" placeholder="例如：数字软件 / 生产力">
+        </label>
+        <label class="field">
+          <span>一句话本质</span>
+          <textarea name="essence" rows="3" placeholder="它为什么值得进你的设计库？"></textarea>
+        </label>
+      </div>
+      <div class="dialog-foot">
+        <button type="button" class="ghost-btn" id="create-cancel">取消</button>
+        <button type="submit" class="primary-btn">创建条目</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ============ Shortcuts dialog ============ -->
+  <dialog id="shortcuts-dialog" class="lin-dialog shortcuts-dialog" closedby="any" aria-labelledby="shortcuts-title">
+    <div class="dialog-head">
+      <h1 id="shortcuts-title" class="dialog-title">键盘快捷键</h1>
+      <button type="button" class="ghost-btn" id="shortcuts-close">关闭 <kbd class="kbd">Esc</kbd></button>
+    </div>
+    <div class="dialog-body">
+      <dl class="shortcut-grid" id="shortcut-grid"></dl>
+    </div>
+  </dialog>
+
+  <!-- ============ Reference Image Lightbox ============ -->
+  <dialog id="lightbox" class="lin-dialog lightbox-dialog" closedby="any" aria-labelledby="lightbox-title">
+    <div class="dialog-head">
+      <div class="lightbox-head-meta">
+        <span class="count-chip" id="lightbox-counter">1 / 3</span>
+        <h1 id="lightbox-title" class="dialog-title">参考图预览</h1>
+      </div>
+      <div class="lightbox-controls">
+        <button type="button" class="ghost-btn" id="lightbox-prev" aria-label="上一张参考图"><kbd class="kbd">←</kbd></button>
+        <button type="button" class="ghost-btn" id="lightbox-next" aria-label="下一张参考图"><kbd class="kbd">→</kbd></button>
+        <button type="button" class="ghost-btn" id="lightbox-close">关闭 <kbd class="kbd">Esc</kbd></button>
+      </div>
+    </div>
+    <div class="lightbox-stage" id="lightbox-stage"></div>
+    <div class="lightbox-strip" id="lightbox-strip" hidden></div>
+    <div class="lightbox-foot">
+      <span class="workspace-tag" id="lightbox-tag">UI</span>
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span id="toast-text"></span>
+    <button type="button" class="toast-undo" id="toast-undo">撤销 <kbd class="kbd">⌘Z</kbd></button>
+  </div>
+
+  <script type="module" src="./src/linear/app.js?v=10"></script>
+</body>
+</html>

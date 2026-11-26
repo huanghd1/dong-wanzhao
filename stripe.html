@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fable Index · Claude Fable 5.2 优秀作品收集（02 · Stripe 设计母本）</title>
+  <meta
+    name="description"
+    content="以 02 · Stripe（Web / Docs / Press）设计母本构建的 Claude Fable 5.2 优秀作品收集与渐进式技术拆解个人网站。"
+  >
+  <!-- Single Source of Truth: directly loads your reusable Stripe Design Vault tokens -->
+  <link rel="stylesheet" href="./design-vault/stripe-02/tokens.css">
+  <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳至主要内容</a>
+
+  <!-- Toggleable Stripe 4-Column Architectural Guide Rails -->
+  <div class="rails-overlay" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">F5</span>
+        <span>Fable Index</span>
+        <span class="brand-version">5.2 · STRIPE-02</span>
+      </a>
+
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#works">精选作品库</a>
+        <a href="#anatomy">四层技术解剖</a>
+        <a href="#press">Press 生态索引</a>
+        <a href="#design-vault">DESIGN.md 母本</a>
+        <a href="./index.html">01 Linear 工作台</a>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          type="button"
+          class="btn btn-subtle btn-sm"
+          id="toggle-grid-btn"
+          aria-pressed="false"
+        >
+          网格线
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          data-open-add-dialog
+        >
+          + 收录新作品
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================== HERO: Living Stripe Mesh + Interactive Docs Console ==================== -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-mesh-stage" aria-hidden="true">
+        <canvas id="stripe-mesh-canvas" class="hero-mesh-canvas"></canvas>
+      </div>
+
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-pill">
+            <span class="hero-pill-dot" aria-hidden="true"></span>
+            <span>Claude Fable 5.2 · 2026.11 实测收录 · 02 Stripe 设计母本驱动</span>
+          </p>
+
+          <h1 id="hero-heading" class="hero-title">
+            Claude Fable 5.2
+            <span class="hero-title-accent">优秀作品与工程拆解库</span>
+          </h1>
+
+          <p class="hero-lead">
+            不是刷完就忘的截图墙。本站直接采用 <strong>Stripe（Web / Docs / Press）</strong>设计语言，把单 Prompt 3D 游戏、Blender MCP 自主短片与长程系统迁移拆成<strong>三层渐进式技术文档</strong>——看效果、抄策略、拿走可复现的工程配置。
+          </p>
+
+          <div class="hero-cta-row">
+            <a class="btn btn-ink" href="#works">
+              浏览 8 件精选杰作 <span class="arrow-shift" aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn-ghost" href="#design-vault">
+              获取本站 DESIGN.md 母本
+            </a>
+          </div>
+
+          <dl class="spec-strip" aria-label="Claude Fable 5.2 模型核心规格">
+            <div class="spec-item">
+              <dt>Context / Output</dt>
+              <dd>1M / 128K</dd>
+            </div>
+            <div class="spec-item">
+              <dt>Thinking Mode</dt>
+              <dd>Adaptive Effort</dd>
+            </div>
+            <div class="spec-item">
+              <dt>API Pricing</dt>
+              <dd>$8 / $40 · 1M</dd>
+            </div>
+            <div class="spec-item">
+              <dt>Cache Read</dt>
+              <dd>$0.20 / 1M</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Floating Stripe Docs Interactive Spec Console -->
+        <aside class="hero-console" aria-label="代表作实时技术配方预览">
+          <div class="console-chrome">
+            <span class="console-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span id="hero-console-endpoint" class="console-endpoint">POST /v1/messages · effort=max</span>
+          </div>
+
+          <div id="hero-console-tabs" class="console-tabs" role="tablist" aria-label="切换代表作配方"></div>
+
+          <div id="hero-console-metrics" class="console-metrics"></div>
+
+          <div class="code-frame">
+            <pre
+              class="code-block"
+              role="region"
+              aria-label="代表作核心代码与提示词结构"
+              tabindex="0"
+            ><code id="hero-console-code"></code></pre>
+          </div>
+
+          <div class="console-footer">
+            <span id="hero-console-badge" class="console-badge">● 3D / 1.4MB 单文件</span>
+            <div class="header-actions">
+              <button type="button" class="btn btn-dark-ghost btn-sm" id="hero-copy-btn">
+                复制代码
+              </button>
+              <button type="button" class="btn btn-primary btn-sm" id="hero-inspect-btn">
+                完整拆解 <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: Curated Works Vault (L0 -> L1 -> L2) ==================== -->
+    <section id="works" class="band band-subtle with-rails" aria-labelledby="works-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">01 · CURATED ARTIFACT VAULT</p>
+          <h2 id="works-heading" class="section-title">精选作品收集 · 三层渐进式拆解</h2>
+          <p class="section-desc">
+            每张卡片严格遵循 Stripe 信息克制原则：<strong>L0 扫读核心指标</strong> → 点击展开 <strong>L1 速览 Prompt 突破点</strong> → 进入 <strong>L2 双栏技术文档</strong> 查看完整复现配方，也可随时录入你新发现的作品。
+          </p>
+        </header>
+
+        <search class="toolbar-shell" aria-label="检索与筛选作品库">
+          <div class="toolbar-top">
+            <div class="search-box">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              <label for="works-search" class="sr-only">搜索作品标题、作者、技术栈或 Prompt 关键词</label>
+              <input
+                id="works-search"
+                type="search"
+                class="search-input"
+                placeholder="搜索 Saltline、Blender MCP、GLSL、Ray-Marching、Wine..."
+              >
+              <kbd class="search-kbd" aria-hidden="true">/</kbd>
+            </div>
+
+            <div class="toolbar-controls">
+              <label for="effort-select" class="sr-only">按思考深度筛选</label>
+              <select id="effort-select" class="filter-pill">
+                <option value="all">全部 Effort 档位</option>
+                <option value="max">Effort: Max</option>
+                <option value="high">Effort: High</option>
+                <option value="medium">Effort: Medium</option>
+              </select>
+
+              <button
+                type="button"
+                class="filter-pill"
+                id="bookmark-filter-btn"
+                aria-pressed="false"
+              >
+                ★ 仅看已收藏
+              </button>
+
+              <button type="button" class="btn btn-primary btn-sm" data-open-add-dialog>
+                + 收录新作品
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <div id="category-pills" class="pill-group" role="group" aria-label="按作品类型筛选"></div>
+            <span id="works-count" class="result-meta" aria-live="polite">显示 8 / 8 件收录作品</span>
+          </div>
+        </search>
+
+        <div id="works-grid" class="works-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: Deep Ink Slanted Band (Stripe Docs Split Anatomy) ==================== -->
+    <section id="anatomy" class="anatomy-band" aria-labelledby="anatomy-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow eyebrow-cyan">02 · STRIPE DOCS INTERACTIVE ANATOMY</p>
+          <h2 id="anatomy-heading" class="section-title">为什么这些 Fable 5.2 作品能封神？解剖 4 层工程骨架</h2>
+          <p class="section-desc">
+            点击左侧任意工程层，右侧深海蓝技术控制台将同步切换对应的真实配置与规则模板——这是把“偶发惊艳 Demo”沉淀为“稳定可复用工程”的关键。
+          </p>
+        </header>
+
+        <div class="anatomy-layout">
+          <div id="anatomy-steps" class="anatomy-steps" role="tablist" aria-label="四层工程骨架"></div>
+
+          <figure class="anatomy-console">
+            <figcaption class="console-chrome">
+              <span class="console-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span id="anatomy-filename" class="console-endpoint">01-constraints.yaml</span>
+              <button type="button" class="btn btn-dark-ghost btn-sm" id="anatomy-copy-btn">
+                复制片段
+              </button>
+            </figcaption>
+            <pre
+              class="code-block"
+              role="region"
+              aria-labelledby="anatomy-filename"
+              tabindex="0"
+            ><code id="anatomy-code"></code></pre>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: Stripe Press Reading & Ecosystem Index ==================== -->
+    <section id="press" class="band with-rails" aria-labelledby="press-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">03 · STRIPE PRESS MONOGRAPH INDEX</p>
+          <h2 id="press-heading" class="section-title">延伸策展与开源作品源站</h2>
+          <p class="section-desc">
+            借鉴 Stripe Press 精装实体书的克制排印，整理目前跟踪 Claude Fable 5.2 高质量社区产出的核心开源入口，方便你持续挖掘新作品并收录回本站。
+          </p>
+        </header>
+
+        <div id="press-grid" class="press-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: Live Reusable 02 Stripe DESIGN.md Vault ==================== -->
+    <section id="design-vault" class="band band-subtle with-rails" aria-labelledby="vault-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">04 · YOUR REUSABLE DESIGN VAULT</p>
+          <h2 id="vault-heading" class="section-title">本网站正在实时运行的 02 · Stripe 设计母本</h2>
+          <p class="section-desc">
+            这套网站没有硬编码样式——它直接引用你本地仓库里的 <code>design-vault/stripe-02/tokens.css</code>。你可以一键复制色板变量或下载 <code>DESIGN.md</code>，直接拖进你的下一个 AI Agent 项目复用。
+          </p>
+        </header>
+
+        <div class="vault-grid">
+          <div class="vault-panel">
+            <div>
+              <h3>实时 Design Tokens（点击色块直接复制 CSS 变量）</h3>
+              <p class="section-desc" style="font-size: 0.88rem; margin-block-start: 0.3rem;">
+                浅色编辑画布负责长文可读性，深海蓝专供代码与架构面板，严格杜绝廉价 AI 紫粉发光模板味。
+              </p>
+            </div>
+
+            <div id="vault-swatches" class="swatch-grid"></div>
+
+            <div>
+              <h3 style="margin-block-end: 0.65rem;">核心防翻车护栏（Anti-AI-Slop Rules）</h3>
+              <ul class="vault-rules-list">
+                <li><span class="rule-tag rule-do">DO</span><span>用 <code>#0A2540</code> 深海蓝墨水替代纯黑 <code>#000000</code>，让文字锐利不刺眼</span></li>
+                <li><span class="rule-tag rule-do">DO</span><span>复杂 Prompt/架构必须走 L0→L1(<code>&lt;details&gt;</code>)→L2(<code>&lt;dialog&gt;</code>) 渐进披露</span></li>
+                <li><span class="rule-tag rule-dont">DON'T</span><span>严禁在普通卡片上堆砌紫粉霓虹渐变、24px+ 臃肿大圆角与模糊发光阴影</span></li>
+                <li><span class="rule-tag rule-dont">DON'T</span><span>严禁在白底正文中直接使用高饱和 <code>#00D4FF</code> 青色文字（仅限深蓝代码区）</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="vault-doc-box">
+            <div class="console-chrome">
+              <span class="console-endpoint">design-vault/stripe-02/DESIGN.md</span>
+              <div class="header-actions">
+                <button type="button" class="btn btn-dark-ghost btn-sm" id="copy-design-md-btn">
+                  复制 DESIGN.md
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" id="download-design-md-btn">
+                  下载文件
+                </button>
+              </div>
+            </div>
+            <pre
+              id="vault-design-md-preview"
+              class="vault-doc-pre"
+              role="region"
+              aria-label="Stripe DESIGN.md 完整规范预览"
+              tabindex="0"
+            >加载 DESIGN.md 中...</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Fable Index · Claude Fable 5.2 优秀作品收集</strong>
+        <p>Powered by <code>design-vault/stripe-02/DESIGN.md</code> &amp; <code>tokens.css</code> · 本地隐私持久化，无后端依赖</p>
+      </div>
+
+      <div class="footer-tools">
+        <button type="button" class="btn btn-subtle btn-sm" id="export-json-btn">
+          导出个人库 JSON
+        </button>
+        <label class="btn btn-subtle btn-sm" for="import-json-input">
+          导入 JSON 备份
+        </label>
+        <input id="import-json-input" type="file" accept="application/json" class="sr-only">
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== L2 NATIVE MODAL: Stripe Docs Deep Technical Inspector ==================== -->
+  <dialog id="work-dialog" class="stripe-dialog" closedby="any" aria-labelledby="work-dialog-title">
+    <div class="dialog-head">
+      <div>
+        <h1 id="work-dialog-title" class="dialog-title">作品深度技术拆解</h1>
+        <p id="work-dialog-subtitle" style="font-size: 0.82rem; color: var(--color-ink-muted);"></p>
+      </div>
+      <button type="button" class="btn btn-subtle btn-sm" id="work-dialog-close" autofocus>
+        关闭 (Esc)
+      </button>
+    </div>
+
+    <div class="dialog-body">
+      <div class="inspector-split">
+        <div id="inspector-narrative" class="inspector-narrative"></div>
+
+        <aside class="inspector-code-pane" aria-label="可复现技术配方与清单">
+          <div class="console-tabs" role="tablist" aria-label="切换拆解代码视角">
+            <button type="button" class="console-tab" role="tab" aria-selected="true" data-inspector-tab="prompt">
+              Prompt 架构
+            </button>
+            <button type="button" class="console-tab" role="tab" aria-selected="false" data-inspector-tab="mcp">
+              MCP / 模型配置
+            </button>
+            <button type="button" class="console-tab" role="tab" aria-selected="false" data-inspector-tab="repro">
+              复现 Checklist
+            </button>
+          </div>
+
+          <div id="inspector-code-body" class="inspector-code-body"></div>
+
+          <div class="console-footer">
+            <span class="console-badge">● Stripe Docs Progressive Inspector</span>
+            <button type="button" class="btn btn-dark-ghost btn-sm" id="inspector-copy-btn">
+              复制当前面板
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==================== NATIVE MODAL: Add New Personal Fable 5.2 Work ==================== -->
+  <dialog id="add-work-dialog" class="stripe-dialog dialog-narrow" closedby="any" aria-labelledby="add-dialog-title">
+    <div class="dialog-head">
+      <h1 id="add-dialog-title" class="dialog-title">收录新的 Claude Fable 5.2 优秀作品</h1>
+      <button type="button" class="btn btn-subtle btn-sm" id="add-dialog-close">关闭</button>
+    </div>
+
+    <div class="dialog-body">
+      <form id="add-work-form" class="vault-form">
+        <div class="field">
+          <label for="f-title">作品名称 *</label>
+          <input id="f-title" name="title" type="text" required autofocus placeholder="例如：WebGPU 流体沙盒 · 单文件实验">
+        </div>
+
+        <div class="form-row-2">
+          <div class="field">
+            <label for="f-category">作品分类</label>
+            <select id="f-category" name="category">
+              <option value="3d-games">3D 与浏览器游戏</option>
+              <option value="shaders-motion">Shader 与代码动画</option>
+              <option value="blender-mcp">Blender / MCP 自动化</option>
+              <option value="systems-arch">长程系统与编排</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-effort">Adaptive Effort 档位</label>
+            <select id="f-effort" name="effort">
+              <option value="max">Effort: Max</option>
+              <option value="high" selected>Effort: High</option>
+              <option value="medium">Effort: Medium</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="field">
+            <label for="f-creator">作者 / 来源</label>
+            <input id="f-creator" name="creator" type="text" placeholder="例如：@username / GitHub">
+          </div>
+
+          <div class="field">
+            <label for="f-horizon">执行尺度 / 特征</label>
+            <input id="f-horizon" name="horizon" type="text" placeholder="例如：单条 Prompt · 2h MCP">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-summary">一句话核心亮点 *</label>
+          <textarea id="f-summary" name="summary" required placeholder="这个作品为什么惊艳？解决了什么硬核问题？"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-prompt">核心 Prompt 思路 / 复现约束（将收纳在 L1/L2 拆解区）</label>
+          <textarea id="f-prompt" name="promptCore" placeholder="记录关键约束、工具链或 Prompt 原文精华..."></textarea>
+        </div>
+
+        <div class="form-row-2">
+          <div class="field">
+            <label for="f-tags">技术标签（空格或逗号分隔）</label>
+            <input id="f-tags" name="tags" type="text" placeholder="Three.js, MCP, WebAudio">
+          </div>
+
+          <div class="field">
+            <label for="f-url">原始链接（可选）</label>
+            <input id="f-url" name="sourceUrl" type="url" placeholder="https://github.com/...">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-subtle" id="add-dialog-cancel">取消</button>
+          <button type="submit" class="btn btn-primary">写入个人作品库</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <div id="live-toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

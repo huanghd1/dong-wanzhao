@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 2,
+  "schedule": "CRON_TZ=Asia/Shanghai 0 9 * * *",
+  "dailyQuota": 16,
+  "maxImagesPerWork": 6,
+  "lastUpdatedAt": "2026-11-26T22:00:00+08:00",
+  "lastRunSummary": "已配置单日自动更新 16 部（设计/游戏/网页/产品/App 全覆盖，按模型与品类自动归入对应列表）；当前已入库 5 部共 30 张图",
+  "categories": [
+    "design",
+    "game",
+    "web",
+    "product",
+    "app"
+  ],
+  "items": [
+    {
+      "id": "dy-20261126-1",
+      "key": "DY-1",
+      "type": "daily",
+      "category": "game",
+      "modelFamily": "other",
+      "modelName": "Gemini 4 Neon / GPT-6.2 Sol",
+      "routedViews": ["daily", "games", "othermodel"],
+      "discoveredDate": "2026-11-26",
+      "title": "Alpine Ski Run · 3D 阿尔卑斯第一人称滑雪游戏",
+      "domain": "每日精选 / 3D 网页游戏",
+      "status": "backlog",
+      "priority": 1,
+      "starred": false,
+      "labels": [
+        "游戏",
+        "Gemini 4 Neon",
+        "Three.js",
+        "3D Physics"
+      ],
+      "essence": "零外部模型文件、纯代码 Three.js 构建的 3D 第一人称滑雪游戏：压雪道纹理、松林、运行缆车与实时刻滑雪雾粒子一应俱全，配合蓝/红/黑三阶雪道与风声 Web Audio。",
+      "dna": [
+        [
+          "雪山高对比色板",
+          "新雪白 #F7FBFF / 冰川蓝 #7EC8E3 / 冷杉绿 #1F4D3A / 岩板黑 #0F2233 + 蓝/红/黑道语义色"
+        ],
+        [
+          "竞赛字阶体系",
+          "山地标题与极速读数 Barlow Condensed（700/800）+ 引导 Inter + 秒表/海拔 JetBrains Mono"
+        ],
+        [
+          "纯代码 3D 世界",
+          "100dvh 满屏雪道视口，压雪灯芯绒着色、实例化雪松林、移动红缆车与动态刻滑喷雪粒子"
+        ],
+        [
+          "极克制 HUD 护栏",
+          "14px 毛玻璃顶栏遥测条 + 首帧即开的出发胶囊，移动端自动补齐左右/收身/跳跃触控垫"
+        ]
+      ],
+      "notes": [
+        "3D 实时游戏 HUD 面积绝不超过视口 10%，严禁弹出遮挡雪道视线的重型弹窗菜单",
+        "速度感必须靠视野 FOV 动态拉伸、雪雾粒子与风声频谱联动，而不靠廉价动态模糊"
+      ],
+      "notesLabel": "红线 DON'T",
+      "sourceUrl": "https://vibefather.ai/templates/first-person-ski-run-game",
+      "updatedAt": 1795662791079,
+      "refs": [
+        {
+          "title": "第一人称滑雪实机动态录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261126-1-1.webp",
+          "caption": "纯代码 Three.js 阿尔卑斯雪道与实时刻滑物理演示。"
+        },
+        {
+          "title": "山顶出发台与蓝/红/黑雪道选择",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-1-2.jpg",
+          "caption": "14px 毛玻璃顶栏遥测条与全胶囊难度徽章。"
+        },
+        {
+          "title": "雪松林穿梭与旗门高速刻滑",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-1-3.jpg",
+          "caption": "实例化冷杉林、压雪道明暗与实时速度读数。"
+        },
+        {
+          "title": "自由式跳台腾空与雪雾粒子",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-1-4.jpg",
+          "caption": "跳跃特技提示与刻滑瞬间扬起的动态雪粒效果。"
+        },
+        {
+          "title": "山谷木屋终点段高速俯冲",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-1-5.jpg",
+          "caption": "远景雪峰与木质山谷小镇共同构成完整空间纵深。"
+        },
+        {
+          "title": "完赛计时成绩单与分段时间",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-1-6.jpg",
+          "caption": "JetBrains Mono 等宽秒表、垂直落差与一键重跑面板。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261126-2",
+      "key": "DY-2",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "claude",
+      "modelName": "Claude Opus 5.5",
+      "routedViews": ["daily", "aiweb", "fable"],
+      "discoveredDate": "2026-11-26",
+      "title": "Moonfoil · Y2K 液态铬金潮牌视觉发售页",
+      "domain": "每日精选 / 先锋潮牌视觉设计",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "Claude Opus 5.5",
+        "Y2K Chrome",
+        "Drop Design"
+      ],
+      "essence": "专为限量胶囊发售设计的 Y2K 液态铬金视觉页：首屏巨幅 3D 液态金属字标与实时倒计时，下滑衔接可拖拽模切贴纸商品轮播、暗夜型录与电子排队签。",
+      "dna": [
+        [
+          "Y2K 电光色板",
+          "虚空黑 #07060D / 紫外 #160B36 / 电光青 #27F2FF / 霓虹粉 #FF2FB3 / 酸性黄 #E8FF3A"
+        ],
+        [
+          "先锋平面字阶",
+          "宽体展示字 Unbounded（700/900）+ 正文 Hanken Grotesk + 倒计时/尺码/票签 Martian Mono"
+        ],
+        [
+          "限量发售节奏",
+          "巨幅 3D 铬金字标 → 跑马灯公告 → 贴纸覆盖的商品卡 → 暗夜 Lookbook → 前端排队电子票"
+        ],
+        [
+          "空间与留白护栏",
+          "120px 桌面纵向章节间距，即使高饱和撞色也不互相打架，主体服装照片保持高锐度主体"
+        ]
+      ],
+      "notes": [
+        "Y2K 撞色必须用 #07060D 近黑底层压住全局能量，绝不能把荧光色平铺当底色导致刺眼",
+        "倒计时与库存编号必须用等宽数字（tabular-nums）防止每秒跳动引发布局抖动"
+      ],
+      "notesLabel": "红线 DON'T",
+      "sourceUrl": "https://vibefather.ai/templates/y2k-chrome-fashion-drop-page",
+      "updatedAt": 1795662790079,
+      "refs": [
+        {
+          "title": "Moonfoil 3D 液态铬金字标动态录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261126-2-1.webp",
+          "caption": "电光青/紫丁香/霓虹粉打光下的液态金属首屏与实时倒计时。"
+        },
+        {
+          "title": "倒计时与排队人数实时指示区",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-2-2.jpg",
+          "caption": "Martian Mono 等宽倒计时数字与底部队列进度条。"
+        },
+        {
+          "title": "限量四件模切贴纸商品陈列",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-2-3.jpg",
+          "caption": "FOUR PIECES. ONE RUN. NO RESTOCK 粗体宣言与荧光贴纸角标。"
+        },
+        {
+          "title": "暗夜实拍型录 · SHOT AFTER HOURS",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-2-4.jpg",
+          "caption": "网格地球装饰线配暗调霓虹人像摄影，强化地下潮流质感。"
+        },
+        {
+          "title": "单品详情与尺码快速选配态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-2-5.jpg",
+          "caption": "紧凑尺码胶囊与高对比购买/候补动作条。"
+        },
+        {
+          "title": "电子排队票签与发售规则收口",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-2-6.jpg",
+          "caption": "前端生成带编号的限量排队凭证与极简规则底栏。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261126-3",
+      "key": "DY-3",
+      "type": "daily",
+      "category": "web",
+      "modelFamily": "other",
+      "modelName": "Gemini 4 Neon / GPT-6.2 Sol",
+      "routedViews": ["daily", "aiweb", "othermodel"],
+      "discoveredDate": "2026-11-26",
+      "title": "Aurelia · 24,000 GPU 粒子变形 3D 空间音频官网",
+      "domain": "每日精选 / 3D GPU 着色器网页",
+      "status": "backlog",
+      "priority": 1,
+      "starred": false,
+      "labels": [
+        "网页",
+        "Gemini 4 Neon",
+        "GPU Particles",
+        "Three.js"
+      ],
+      "essence": "固定全屏 Three.js 舞台实时驱动 24,000 颗自定义着色器粒子，随滚动丝滑变形为星云、空间耳机、声波曲线、全球听众地球与徽标五重 3D 形态，并支持鼠标排斥与配色切换。",
+      "dna": [
+        [
+          "深空极光色板",
+          "深空底 #07071A / 黑曜石玻璃 #10122D / 极光青 #4EF2C3 / 离子紫 #8C5CFF / 暖白 #F6F3EC"
+        ],
+        [
+          "字体体系",
+          "大标题与品名 Syne（700/800）+ 评测/说明 Inter + 声学频响参数 JetBrains Mono"
+        ],
+        [
+          "五幕粒子变形编排",
+          "1240px 居中滚动列配 96px 章节呼吸间距，让 5 种 3D 粒子剪影始终拥有无遮挡展示窗口"
+        ],
+        [
+          "光学质感细节",
+          "粒子带柔和景深散景（Bokeh）与鼠标柔和排斥，切换机身配色时整片粒子云实时染色"
+        ]
+      ],
+      "notes": [
+        "移动端需自动降档粒子规模（如 24k → 9k）并对 prefers-reduced-motion 提供静态退化帧",
+        "文案栏与粒子主剪影必须左右错位排布，绝不让白字叠压在最亮粒子群中心"
+      ],
+      "notesLabel": "红线 DON'T",
+      "sourceUrl": "https://vibefather.ai/templates/particle-morph-3d-landing-page",
+      "updatedAt": 1795662789079,
+      "refs": [
+        {
+          "title": "24,000 GPU 粒子五形态变形录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261126-3-1.webp",
+          "caption": "星云→耳机→声波→地球→徽标随滚动连续实时变形。"
+        },
+        {
+          "title": "空间耳机 3D 粒子剪影与选购首屏",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-3-2.jpg",
+          "caption": "右侧悬浮耳机粒子云，左侧 Syne 大标题与双版本价格卡。"
+        },
+        {
+          "title": "声学参考级参数与粒子声波形态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-3-3.jpg",
+          "caption": "Engineered to reference-room tolerances + JetBrains Mono 声学指标。"
+        },
+        {
+          "title": "粒子形态过渡态与散景景深细节",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-3-4.jpg",
+          "caption": "万级粒子在形态切换中呈现星尘散射与极光蓝紫微光。"
+        },
+        {
+          "title": "全球听众评价与耳机配色粒子联动",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-3-5.jpg",
+          "caption": "切换不同机身版本，右侧 3D 粒子云同步变换主色调。"
+        },
+        {
+          "title": "预售卡片与 FAQ 收口结构",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-3-6.jpg",
+          "caption": "14px 磨砂黑曜石卡片承接 $389 / $499 预售转化。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261126-4",
+      "key": "DY-4",
+      "type": "daily",
+      "category": "product",
+      "modelFamily": "other",
+      "modelName": "GLM-5.3 / DeepSeek V4.1",
+      "routedViews": ["daily", "products", "othermodel"],
+      "discoveredDate": "2026-11-26",
+      "title": "Averkind · 独立机械腕表官网 × 实时表盘选配器",
+      "domain": "每日精选 / 静奢硬件产品官网",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "产品",
+        "GLM-5.3",
+        "Quiet Luxury",
+        "Live Configurator"
+      ],
+      "essence": "独立制表品牌的静奢双页产品官网：缟玛瑙黑 × 香槟金配色、微距表盘开屏、随滚动拆解机芯零部件的工艺叙事，以及支持实时切换表盘与表带并即时计价的 SVG 选配器。",
+      "dna": [
+        [
+          "制表金属色板",
+          "缟玛瑙 #0A0A0B / 石墨 #151619 / 铑灰线 #2A2D33 / 香槟金 #C8A96A / 瓷白 #EDEDEA"
+        ],
+        [
+          "铭文字体体系",
+          "罗马碑铭感衬线 Marcellus + 克制几何无衬线 Jost + 编号/价格宽字距 IBM Plex Mono（0.14em）"
+        ],
+        [
+          "零圆角结构美学",
+          "图片、表格与展板全面采用 0px 直角，规格表仅用 1px 铑灰细线 + 20px 宽松行距呈现"
+        ],
+        [
+          "产品选配闭环",
+          "微距表盘种草 → 机芯工艺四步拆解 → 三系列产品网格 → SVG 实时换盘换带选配与门店预约"
+        ]
+      ],
+      "notes": [
+        "高端机械/珠宝/手表产品站禁止使用圆润卡通卡片和浮夸阴影，靠材质微距摄影与 1px 细线立住高级感",
+        "选配器切换材质必须零延迟实时反映在主表盘预览图与价格上，绝不整页刷新"
+      ],
+      "notesLabel": "红线 DON'T",
+      "sourceUrl": "https://vibefather.ai/templates/luxury-watch-brand-website",
+      "updatedAt": 1795662788079,
+      "refs": [
+        {
+          "title": "Averkind 微距表盘与工艺滚动录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261126-4-1.webp",
+          "caption": "Time, told quietly. 低明度香槟金微距表盘开屏体验。"
+        },
+        {
+          "title": "品牌宣言与超大幅微距表冠光影",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-4-2.jpg",
+          "caption": "Marcellus 铭文衬线配极暗背景，凸显金属拉丝与指针反光。"
+        },
+        {
+          "title": "裸露机械机芯工艺叙事 · Eleven hands",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-4-3.jpg",
+          "caption": "微距机芯齿轮特写 + 1px 铑灰细线规格标注，克制而权威。"
+        },
+        {
+          "title": "系列腕表网格与精准参数表",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-4-4.jpg",
+          "caption": "0px 直角展板与 IBM Plex Mono 等宽机芯参数行。"
+        },
+        {
+          "title": "上手视角与佩戴尺度章节",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-4-5.jpg",
+          "caption": "See it on the wrist. 超大黑屏留白引导进入细节预览。"
+        },
+        {
+          "title": "SVG 表盘/表带实时选配与门店预约",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-4-6.jpg",
+          "caption": "无需后端即可交互式切换表盘配色、表带材质与实时估价。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261126-5",
+      "key": "DY-5",
+      "type": "daily",
+      "category": "app",
+      "modelFamily": "claude",
+      "modelName": "Claude Opus 5.5",
+      "routedViews": ["daily", "products", "fable"],
+      "discoveredDate": "2026-11-26",
+      "title": "Gridlark / Wattline · 暗黑家庭能源监控仪表盘 App",
+      "domain": "每日精选 / 智能硬件监控 App",
+      "status": "backlog",
+      "priority": 1,
+      "starred": false,
+      "labels": [
+        "App",
+        "Claude Opus 5.5",
+        "OLED Dashboard",
+        "SVG Telemetry"
+      ],
+      "essence": "极高完成度的暗黑单屏能源管理 App：固定左侧导航、顶栏日/周/月/年全局切换、手绘 SVG 耗电与光伏双线面积图、实时功率环仪表，以及拨动开关即可重算总功耗的智能家电控制列表。",
+      "dna": [
+        [
+          "暗夜能源色板",
+          "深墨底 #0B0F14 / 面板 #11161D / 抬升层 #161D26 / 细线 #1F2833 + 酸柠绿 #C6FF3D & 琥珀 #FFB547"
+        ],
+        [
+          "仪表盘字阶",
+          "KPI 大数字与功率环 Space Grotesk + 导航/标签 Inter + 坐标轴/瓦特读数 JetBrains Mono"
+        ],
+        [
+          "全局单状态联动",
+          "点击顶栏 Day / Week / Month / Year 胶囊，四张 KPI 卡、主面积图、分时柱图与电价条同步平滑变形"
+        ],
+        [
+          "实时可控家电列表",
+          "右侧设备清单（热泵/冰箱/电动车桩等）配备真实拨动开关，开关瞬间重算总负荷环读数"
+        ]
+      ],
+      "notes": [
+        "专业监控类 App 最多使用 2 个高纯度数据色（如光伏绿 + 峰电琥珀），其余面板全部压回冷暗灰层级",
+        "数字指标必须启用等宽数字与平滑过渡，图表直接标注极值与单位，消灭多余装饰格线"
+      ],
+      "notesLabel": "红线 DON'T",
+      "sourceUrl": "https://vibefather.ai/templates/home-energy-dashboard",
+      "updatedAt": 1795662787079,
+      "refs": [
+        {
+          "title": "Gridlark 能源监控 App 动态录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261126-5-1.webp",
+          "caption": "日/周/月切换、SVG 曲线平滑形变与家电实时开关演示。"
+        },
+        {
+          "title": "日视图总览 · KPI 卡片 × 光伏/耗电双线图",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-5-2.jpg",
+          "caption": "酸柠绿 #C6FF3D 实时功率环（2.04 kW）与顶部四联 KPI 迷你图。"
+        },
+        {
+          "title": "月视图数据切换 · 623.1 kWh 趋势对比",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-5-3.jpg",
+          "caption": "单状态切换即让所有图表、电费估算与峰谷曲线同步重绘。"
+        },
+        {
+          "title": "悬停数据浮层与精细刻度交互",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-5-4.jpg",
+          "caption": "JetBrains Mono 精准显示每小时瓦特读数与光伏自给率。"
+        },
+        {
+          "title": "分房间柱状能耗图 × 右侧智能家电开关",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-5-5.jpg",
+          "caption": "热泵、电动车桩、照明等设备配真实开关，实时联动总负荷。"
+        },
+        {
+          "title": "分时电价带与家庭能耗活动时间线",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261126-5-6.jpg",
+          "caption": "底部紧凑排布谷电/峰电电价条与异常能耗提示。"
+        }
+      ]
+    }
+  ]
+}
