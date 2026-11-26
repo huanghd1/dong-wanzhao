@@ -2,12 +2,17 @@ name: Daily Data Update
 
 on:
   schedule:
-    # 每天北京时间 09:00（UTC 01:00）自动执行一次
+    # 每天北京时间 09:00（UTC 01:00）自动更新共 15 部（AI 10 部 + 建筑/工业/美术/渲染/商品3D展板 5 部）
     - cron: "0 1 * * *"
   workflow_dispatch:
     inputs:
-      quota:
-        description: "本次新增收录作品数量（默认 5 部：建筑/工业/美术/渲染/商品3D展板）"
+      ai_quota:
+        description: "AI 精选作品新增数量（默认 10 部）"
+        required: false
+        default: "10"
+        type: string
+      design_quota:
+        description: "建筑/工业/美术/3D渲染/商品3D展板新增数量（默认 5 部）"
         required: false
         default: "5"
         type: string
@@ -38,10 +43,11 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
 
-      - name: Run daily data update script
+      - name: Run daily 15-item data update script
         env:
-          DAILY_QUOTA_INPUT: ${{ inputs.quota || '5' }}
-        run: python scripts/update-data.py --quota "$DAILY_QUOTA_INPUT"
+          AI_QUOTA_INPUT: ${{ inputs.ai_quota || '10' }}
+          DESIGN_QUOTA_INPUT: ${{ inputs.design_quota || '5' }}
+        run: python scripts/update-data.py --ai-quota "$AI_QUOTA_INPUT" --design-quota "$DESIGN_QUOTA_INPUT"
 
       - name: Commit and push updated data
         run: |
@@ -53,6 +59,6 @@ jobs:
             exit 0
           fi
           TODAY=$(TZ='Asia/Shanghai' date +'%Y-%m-%d')
-          git commit -m "chore(data): daily AI design vault update (${TODAY})"
+          git commit -m "chore(data): daily 15-item update (${TODAY})"
           git pull --rebase origin main
           git push origin HEAD:main

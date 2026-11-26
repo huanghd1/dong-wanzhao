@@ -37,8 +37,8 @@ const state = {
   subModel: "all",
   dailyMeta: {
     lastUpdatedAt: null,
-    dailyQuota: 5,
-    lastRunSummary: "每日 09:00 自动更新 5 部（涵盖世界设计大奖：建筑/工业/美术/渲染 与 商品 3D 展板，并自动归入对应专题）",
+    dailyQuota: 15,
+    lastRunSummary: "每日 09:00 自动更新 15 部（AI 精选 10 部 + 建筑/工业/美术/3D 渲染/商品 3D 展板 5 部，并自动归入对应专题）",
   },
   filter: "",
   selectedId: null,
@@ -426,14 +426,14 @@ function renderDailyBar() {
   const stamp = state.dailyMeta.lastUpdatedAt
     ? state.dailyMeta.lastUpdatedAt.replace("T", " ").slice(0, 16)
     : "待首次执行";
-  const quota = state.dailyMeta.dailyQuota || 5;
+  const quota = state.dailyMeta.dailyQuota || 15;
   const dailyRoutedCount = viewPool.filter((i) => i.type === "daily").length;
 
   const rightMeta =
     state.view === "daily"
       ? `<div class="daily-meta">
           <span class="daily-dot" aria-hidden="true"></span>
-          <span>每日 09:00 自动更新 ${quota} 部（世界设计大奖 &amp; 商品 3D 展板）· 上次：${esc(stamp)}</span>
+          <span>每日 09:00 自动更新 ${quota} 部（AI 10 + 建筑/工业/美术/渲染/3D 展板 5）· 上次：${esc(stamp)}</span>
           <button type="button" class="ghost-btn" data-action="refresh-daily">刷新列表</button>
         </div>`
       : state.view === "awards"
@@ -964,7 +964,7 @@ function openPalette() {
   const dlg = $("palette");
   if (dlg.open) return;
   const sel = getItem(state.selectedId);
-  $("palette-context").textContent = sel ? `${sel.key} · ${sel.title}` : "Design Vault";
+  $("palette-context").textContent = sel ? `${sel.key} · ${sel.title}` : "东东设计万物";
   $("palette-input").value = "";
   palette.active = 0;
   renderPalette();

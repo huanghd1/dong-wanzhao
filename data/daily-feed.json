@@ -1,10 +1,12 @@
 {
   "schemaVersion": 2,
   "schedule": "GitHub Actions Daily 09:00 Asia/Shanghai (01:00 UTC)",
-  "dailyQuota": 5,
+  "dailyQuota": 15,
+  "aiQuota": 10,
+  "designQuota": 5,
   "maxImagesPerWork": 6,
   "lastUpdatedAt": "2026-11-26T22:00:00+08:00",
-  "lastRunSummary": "已配置单日自动更新 16 部（设计/游戏/网页/产品/App 全覆盖，按模型与品类自动归入对应列表）；当前已入库 5 部共 30 张图",
+  "lastRunSummary": "已配置每日自动更新 15 部（AI 精选 10 部 + 建筑/工业/美术/3D 渲染/商品 3D 展板 5 部，自动归入对应专题）；当前已入库 5 部共 30 张图",
   "categories": [
     "design",
     "game",
