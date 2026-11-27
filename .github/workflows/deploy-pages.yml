@@ -21,11 +21,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main branch
@@ -48,6 +45,16 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: "_site"
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for artifact index consistency
+        run: sleep 5
 
       - name: Deploy to GitHub Pages
         id: deployment
