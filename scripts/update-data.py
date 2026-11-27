@@ -174,18 +174,29 @@ def save_feed(feed):
     tmp.replace(FEED_PATH)
 
 
+def canonical_url_keys(url):
+    u = (url or "").split("?")[0].rstrip("/").lower()
+    keys = [u] if u else []
+    if "sketchfab.com/" in u:
+        m = re.search(r"([0-9a-f]{32})$", u)
+        if m:
+            keys.append(f"sketchfab:{m.group(1)}")
+    return keys
+
+
 def existing_urls_and_titles():
     seen_urls, seen_titles = set(), set()
     feed = load_feed()
     for it in feed.get("items", []):
-        if it.get("sourceUrl"):
-            seen_urls.add(it["sourceUrl"].split("?")[0].rstrip("/").lower())
+        for k in canonical_url_keys(it.get("sourceUrl")):
+            seen_urls.add(k)
         if it.get("title"):
             seen_titles.add(it["title"].strip().lower())
     if SEED_DATA_JS.exists():
         txt = SEED_DATA_JS.read_text(encoding="utf-8", errors="ignore")
         for u in re.findall(r'sourceUrl:\s*"([^"]+)"', txt):
-            seen_urls.add(u.split("?")[0].rstrip("/").lower())
+            for k in canonical_url_keys(u):
+                seen_urls.add(k)
     return seen_urls, seen_titles
 
 
@@ -451,11 +462,12 @@ def discover_design_3d_candidates(seen_urls, seen_titles):
     added = set()
 
     def push(cat, c):
-        u = (c.get("url") or "").split("?")[0].rstrip("/").lower()
+        ukeys = canonical_url_keys(c.get("url"))
         t = (c.get("title") or "").strip().lower()
-        if not u or not c.get("previewImg") or u in seen_urls or u in added or t in seen_titles:
+        if not ukeys or not c.get("previewImg") or any(k in seen_urls or k in added for k in ukeys) or t in seen_titles:
             return
-        added.add(u)
+        for k in ukeys:
+            added.add(k)
         buckets[cat].append(c)
 
     # 1. ArchDaily RSS — global architecture
@@ -772,8 +784,17 @@ def main():
     parser.add_argument("--design-quota", type=int, default=int(os.environ.get("DESIGN_QUOTA", "5")), help="World design & Product 3D works per run (default: 5)")
     parser.add_argument("--max-ai-images", type=int, default=int(os.environ.get("MAX_AI_IMAGES", "4")), help="Max images saved per AI work (default: 4)")
     parser.add_argument("--max-items", type=int, default=int(os.environ.get("MAX_FEED_ITEMS", "180")), help="Rolling daily archive cap (default: 180)")
+    parser.add_argument("--skip-if-today", action="store_true", help="Exit cleanly if items for today (Asia/Shanghai) were already ingested")
     parser.add_argument("--dry-run", action="store_true", help="Discover and print selected 15 works without modifying files")
     args = parser.parse_args()
+
+    if args.skip_if_today and not args.dry_run:
+        existing_feed = load_feed()
+        today_str = today_dash()
+        today_count = sum(1 for it in existing_feed.get("items", []) if it.get("discoveredDate") == today_str)
+        if today_count > 0:
+            print(f"[SKIP] Today ({today_str}) already has {today_count} ingested works; skipping duplicate scheduled run.", flush=True)
+            return
 
     ai_quota = max(0, min(args.ai_quota, 20))
     design_quota = max(0, min(args.design_quota, 15))
@@ -855,7 +876,7 @@ def main():
         return
 
     feed["schemaVersion"] = 2
-    feed["schedule"] = "GitHub Actions Daily 09:00 Asia/Shanghai (01:00 UTC)"
+    feed["schedule"] = "GitHub Actions Daily 08:37 + 09:23 Asia/Shanghai (00:37 / 01:23 UTC)"
     feed["dailyQuota"] = total_target
     feed["aiQuota"] = ai_quota
     feed["designQuota"] = design_quota

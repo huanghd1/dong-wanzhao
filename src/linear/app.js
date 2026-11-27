@@ -249,8 +249,8 @@ async function syncDailyFeed(manual = false) {
     const feed = await res.json();
     state.dailyMeta = {
       lastUpdatedAt: feed.lastUpdatedAt || null,
-      dailyQuota: feed.dailyQuota || 16,
-      lastRunSummary: feed.lastRunSummary || "每日 09:00 自动更新 16 部（每部最多 6 张图）",
+      dailyQuota: feed.dailyQuota || 15,
+      lastRunSummary: feed.lastRunSummary || "每日自动更新 15 部（AI 精选 10 部 + 建筑/工业/美术/3D渲染/商品3D展板 5 部）",
     };
 
     const incoming = Array.isArray(feed.items) ? feed.items : [];

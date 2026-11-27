@@ -2,8 +2,9 @@ name: Daily Data Update
 
 on:
   schedule:
-    # 每天北京时间 09:00（UTC 01:00）自动更新共 15 部（AI 10 部 + 建筑/工业/美术/渲染/商品3D展板 5 部）
-    - cron: "0 1 * * *"
+    # 避开 GitHub Actions 全球 :00 整点拥堵：每天北京时间 08:37 主跑 + 09:23 幂等补跑兜底
+    - cron: "37 0 * * *"
+    - cron: "23 1 * * *"
   workflow_dispatch:
     inputs:
       ai_quota:
@@ -47,7 +48,13 @@ jobs:
         env:
           AI_QUOTA_INPUT: ${{ inputs.ai_quota || '10' }}
           DESIGN_QUOTA_INPUT: ${{ inputs.design_quota || '5' }}
-        run: python scripts/update-data.py --ai-quota "$AI_QUOTA_INPUT" --design-quota "$DESIGN_QUOTA_INPUT"
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          EXTRA_ARGS=""
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            EXTRA_ARGS="--skip-if-today"
+          fi
+          python scripts/update-data.py --ai-quota "$AI_QUOTA_INPUT" --design-quota "$DESIGN_QUOTA_INPUT" $EXTRA_ARGS
 
       - name: Commit and push updated data
         run: |

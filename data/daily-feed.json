@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
-  "schedule": "GitHub Actions Daily 09:00 Asia/Shanghai (01:00 UTC)",
+  "schedule": "GitHub Actions Daily 08:37 + 09:23 Asia/Shanghai (00:37 / 01:23 UTC)",
   "dailyQuota": 15,
   "aiQuota": 10,
   "designQuota": 5,
   "maxImagesPerWork": 6,
-  "lastUpdatedAt": "2026-11-26T22:00:00+08:00",
-  "lastRunSummary": "已配置每日自动更新 15 部（AI 精选 10 部 + 建筑/工业/美术/3D 渲染/商品 3D 展板 5 部，自动归入对应专题）；当前已入库 5 部共 30 张图",
+  "lastUpdatedAt": "2026-11-27T09:25:29+08:00",
+  "lastRunSummary": "2026-11-27 自动新增 15 部（AI 精选 10 部 + 建筑/工业/美术/渲染/商品3D展板 5 部），共 42 张图并自动归类",
   "categories": [
     "design",
     "game",
@@ -15,6 +15,984 @@
     "app"
   ],
   "items": [
+    {
+      "id": "dy-20261127-6",
+      "key": "DY-6",
+      "type": "daily",
+      "category": "architecture",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "High Andean Refuge in Quichuay / Pircanato / Pircanato",
+      "domain": "每日精选 / 建筑 · ArchDaily",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "建筑",
+        "ArchDaily",
+        "国际建筑"
+      ],
+      "essence": "The High Andean Refuge in Quichuay integrates contemporary materials and production methods with traditional techniques from the Peruvian highlands through an experimental construction system. It is d",
+      "dna": [
+        [
+          "来源渠道",
+          "ArchDaily"
+        ],
+        [
+          "作者 / 机构",
+          "ArchDaily Featured"
+        ],
+        [
+          "自动归属",
+          "建筑（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "ArchDaily Editorial Pick"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：ArchDaily）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://www.archdaily.com/1189328/high-andean-refuge-in-quichuay-pircanato-pircanato",
+      "updatedAt": 1795742603602,
+      "refs": [
+        {
+          "title": "High Andean Refuge in Quichuay / Pircanato / Pircanato · 主视觉预览",
+          "tag": "实景精选",
+          "src": "./assets/refs/daily-20261127-6-1.jpg",
+          "caption": "The High Andean Refuge in Quichuay integrates contemporary materials and production methods with traditional techniques from the Peruvian hi"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-7",
+      "key": "DY-7",
+      "type": "daily",
+      "category": "industrial",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "Stylized Cassette Player 📻",
+      "domain": "每日精选 / 工业设计 · Sketchfab Industrial",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "工业设计",
+        "Sketchfab Industrial",
+        "18 Likes"
+      ],
+      "essence": "A high-tech portable cassette player and audio recorder designed with a strong industrial and retro-sci-fi aesthetic. This prop blends classic mechanical elements—like tactile buttons and ph",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab Industrial"
+        ],
+        [
+          "作者 / 机构",
+          "Dalopera3D"
+        ],
+        [
+          "自动归属",
+          "工业设计（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "18 Likes / 282 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab Industrial）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-d897bdaf08814eb4ae6a380bbdf18256",
+      "updatedAt": 1795742602602,
+      "refs": [
+        {
+          "title": "Stylized Cassette Player 📻 · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261127-7-1.jpg",
+          "caption": "A high-tech portable cassette player and audio recorder designed with a strong industrial and retro-sci-fi aesthetic. This prop blends class"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-8",
+      "key": "DY-8",
+      "type": "daily",
+      "category": "art",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "Square Waves - (Use J + K Keys)",
+      "domain": "每日精选 / 美术 · Sketchfab Fine Art",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "美术",
+        "Sketchfab Fine Art",
+        "51 Likes"
+      ],
+      "essence": "![Imgur](https://i.imgur.com/6MHSe36.jpg) # **https://www.youtube.com/watch?v=mErlzzTJYP4** # Please use the** J** and** K** keyboard keys to cycle through the annotiations As with most of m",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab Fine Art"
+        ],
+        [
+          "作者 / 机构",
+          "Tycho Magnetic Anomaly"
+        ],
+        [
+          "自动归属",
+          "美术（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "51 Likes / 620 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab Fine Art）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-e18247c4d6024412a8adb0518e8e4b0e",
+      "updatedAt": 1795742601602,
+      "refs": [
+        {
+          "title": "Square Waves - (Use J + K Keys) · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261127-8-1.jpg",
+          "caption": "![Imgur](https://i.imgur.com/6MHSe36.jpg) # **https://www.youtube.com/watch?v=mErlzzTJYP4** # Please use the** J** and** K** keyboard keys t"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-9",
+      "key": "DY-9",
+      "type": "daily",
+      "category": "render",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "Low Poly Revolver .357 magnum Game Ready 2",
+      "domain": "每日精选 / 3D 渲染 · Sketchfab Staff Pick",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "3D 渲染",
+        "Sketchfab Staff Pick",
+        "64 Likes"
+      ],
+      "essence": "My result from the Chamfer Zone Hard Surface tutorial. Big thanks to Tim Bergholz for the excellent workflow shared during the course. # In this version, I included more details and removed ",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab Staff Pick"
+        ],
+        [
+          "作者 / 机构",
+          "-Arthur-"
+        ],
+        [
+          "自动归属",
+          "3D 渲染（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "64 Likes / 972 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab Staff Pick）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-d0d97c39a3204d16a2fc1ebe0ae21204",
+      "updatedAt": 1795742600602,
+      "refs": [
+        {
+          "title": "Low Poly Revolver .357 magnum Game Ready 2 · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261127-9-1.jpg",
+          "caption": "My result from the Chamfer Zone Hard Surface tutorial. Big thanks to Tim Bergholz for the excellent workflow shared during the course. # In "
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-10",
+      "key": "DY-10",
+      "type": "daily",
+      "category": "product3d",
+      "routedViews": [
+        "daily",
+        "product3d"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "(FREE) Porsche 911 Carrera 4S",
+      "domain": "每日精选 / 商品 3D 展板 · Sketchfab 3D · 汽车出行",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "商品 3D 展板",
+        "Sketchfab 3D",
+        "3613 Likes"
+      ],
+      "essence": "Now for FREE to use in your projects. Enjoy! Model of a Porsche 911 that was a part of a prototype car configurator running on WebGL. More details can be found here: http://bit.ly/1hP8RO1",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab 3D · 汽车出行"
+        ],
+        [
+          "作者 / 机构",
+          "Lionsharp Studios"
+        ],
+        [
+          "自动归属",
+          "商品 3D 展板（自动同步至 daily / product3d）"
+        ],
+        [
+          "社区热度",
+          "3613 Likes / 694141 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab 3D · 汽车出行）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-d01b254483794de3819786d93e0e1ebf",
+      "updatedAt": 1795742896554,
+      "refs": [
+        {
+          "title": "(FREE) Porsche 911 Carrera 4S · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261127-10-1.jpg",
+          "caption": "Now for FREE to use in your projects. Enjoy! Model of a Porsche 911 that was a part of a prototype car configurator running on WebGL. More d"
+        }
+      ],
+      "subKind": "car"
+    },
+    {
+      "id": "dy-20261127-11",
+      "key": "DY-11",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "An AI announces its software engineering takeover",
+      "domain": "每日精选 / 设计 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@iamwesleysmits）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "设计 · daily / aiweb / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/iamwesleysmits-599912",
+      "updatedAt": 1795742603602,
+      "refs": [
+        {
+          "title": "An AI announces its software engineering takeover · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-11-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "An AI announces its software engineering takeover · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-11-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "An AI announces its software engineering takeover · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-11-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "An AI announces its software engineering takeover · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-11-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-12",
+      "key": "DY-12",
+      "type": "daily",
+      "category": "game",
+      "modelFamily": "other",
+      "modelName": "GLM-5.3 · DeepSeek V4.1 Flash",
+      "routedViews": [
+        "daily",
+        "games",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "Indie Game Launch Page",
+      "domain": "每日精选 / 游戏 · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "游戏",
+        "GLM-5.3 · DeepSeek V4.1 Flash",
+        "VibeFather"
+      ],
+      "essence": "A painterly indie game launch page with parallax scenes, a world map teaser and a wishlist close.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "GLM-5.3 · DeepSeek V4.1 Flash（其他模型）"
+        ],
+        [
+          "自动归属",
+          "游戏 · daily / games / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/indie-game-launch-page",
+      "updatedAt": 1795742602602,
+      "refs": [
+        {
+          "title": "Indie Game Launch Page · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-12-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Indie Game Launch Page · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-12-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Indie Game Launch Page · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-12-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Indie Game Launch Page · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-12-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-13",
+      "key": "DY-13",
+      "type": "daily",
+      "category": "web",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "A synthesizer that sings from scratch",
+      "domain": "每日精选 / 网页 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "网页",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@higgsfield_ai）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "网页 · daily / aiweb / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/higgsfield-ai-987047",
+      "updatedAt": 1795742601602,
+      "refs": [
+        {
+          "title": "A synthesizer that sings from scratch · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-13-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "A synthesizer that sings from scratch · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-13-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "A synthesizer that sings from scratch · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-13-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "A synthesizer that sings from scratch · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-13-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-14",
+      "key": "DY-14",
+      "type": "daily",
+      "category": "app",
+      "modelFamily": "claude",
+      "modelName": "Multi-Model AI",
+      "routedViews": [
+        "daily",
+        "products",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "zhouxiaoka/autoclip",
+      "domain": "每日精选 / App · GitHub Trending",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "App",
+        "Multi-Model AI",
+        "GitHub Trending"
+      ],
+      "essence": "AutoClip｜The open-source OpusClip alternative — local-first AI clipping & MCP server, zero subscriptions. 一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Sho",
+      "dna": [
+        [
+          "来源渠道",
+          "GitHub Trending"
+        ],
+        [
+          "模型家族",
+          "Multi-Model AI（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "App · daily / products / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：GitHub Trending），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://github.com/zhouxiaoka/autoclip",
+      "updatedAt": 1795742600602,
+      "refs": [
+        {
+          "title": "zhouxiaoka/autoclip · 主视觉预览",
+          "tag": "实机预览",
+          "src": "./assets/refs/daily-20261127-14-1.jpg",
+          "caption": "AutoClip｜The open-source OpusClip alternative — local-first AI clipping & MCP server, zero subscriptions. 一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-15",
+      "key": "DY-15",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "other",
+      "modelName": "GLM-5.3 · DeepSeek V4.1 Flash",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "E-commerce Admin Dashboard",
+      "domain": "每日精选 / 设计 · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "GLM-5.3 · DeepSeek V4.1 Flash",
+        "VibeFather"
+      ],
+      "essence": "Clean store-admin app: KPI cards, a hand-rolled revenue chart, orders table with filters, product editor and inventory alerts.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "GLM-5.3 · DeepSeek V4.1 Flash（其他模型）"
+        ],
+        [
+          "自动归属",
+          "设计 · daily / aiweb / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/e-commerce-admin-dashboard",
+      "updatedAt": 1795742599602,
+      "refs": [
+        {
+          "title": "E-commerce Admin Dashboard · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-15-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "E-commerce Admin Dashboard · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-15-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "E-commerce Admin Dashboard · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-15-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "E-commerce Admin Dashboard · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-15-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-16",
+      "key": "DY-16",
+      "type": "daily",
+      "category": "game",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "games",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "A Roblox horror game with its own trailer",
+      "domain": "每日精选 / 游戏 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "游戏",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@mihawkxxxxx）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "游戏 · daily / games / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/mihawkxxxxx-699749",
+      "updatedAt": 1795742598602,
+      "refs": [
+        {
+          "title": "A Roblox horror game with its own trailer · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-16-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "A Roblox horror game with its own trailer · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-16-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "A Roblox horror game with its own trailer · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-16-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "A Roblox horror game with its own trailer · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-16-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-17",
+      "key": "DY-17",
+      "type": "daily",
+      "category": "web",
+      "modelFamily": "other",
+      "modelName": "GLM-5.3 · Kimi K3.1 Pro · GLM-5.4",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "Industrial Manufacturing Company Website",
+      "domain": "每日精选 / 网页 · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "网页",
+        "GLM-5.3 · Kimi K3.1 Pro · GLM-5.4",
+        "VibeFather"
+      ],
+      "essence": "A precision machine-shop site with spec-sheet capabilities, an equipment table and an RFQ flow that estimates lead time.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "GLM-5.3 · Kimi K3.1 Pro · GLM-5.4（其他模型）"
+        ],
+        [
+          "自动归属",
+          "网页 · daily / aiweb / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/industrial-manufacturing-company-website",
+      "updatedAt": 1795742597602,
+      "refs": [
+        {
+          "title": "Industrial Manufacturing Company Website · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-17-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Industrial Manufacturing Company Website · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-17-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Industrial Manufacturing Company Website · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-17-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Industrial Manufacturing Company Website · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-17-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-18",
+      "key": "DY-18",
+      "type": "daily",
+      "category": "product",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "products",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "A complete launch film for Vela AI",
+      "domain": "每日精选 / 产品 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "产品",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@ercankeskinx）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "产品 · daily / products / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/ercankeskinx-713531",
+      "updatedAt": 1795742596602,
+      "refs": [
+        {
+          "title": "A complete launch film for Vela AI · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-18-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "A complete launch film for Vela AI · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-18-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "A complete launch film for Vela AI · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-18-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "A complete launch film for Vela AI · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-18-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-19",
+      "key": "DY-19",
+      "type": "daily",
+      "category": "app",
+      "modelFamily": "other",
+      "modelName": "GLM-5.3 · DeepSeek V4.1 Flash",
+      "routedViews": [
+        "daily",
+        "products",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "Coffee Shop Website",
+      "domain": "每日精选 / App · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "App",
+        "GLM-5.3 · DeepSeek V4.1 Flash",
+        "VibeFather"
+      ],
+      "essence": "Warm three-page cafe site with a filterable menu, illustrated map and client-side order-ahead pickup.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "GLM-5.3 · DeepSeek V4.1 Flash（其他模型）"
+        ],
+        [
+          "自动归属",
+          "App · daily / products / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/coffee-shop-website",
+      "updatedAt": 1795742595602,
+      "refs": [
+        {
+          "title": "Coffee Shop Website · 首屏主视觉",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-19-1.jpg",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Coffee Shop Website · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-19-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Coffee Shop Website · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-19-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Coffee Shop Website · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-19-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261127-20",
+      "key": "DY-20",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-27",
+      "title": "An anime music video with timed lyrics",
+      "domain": "每日精选 / 设计 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@WesRoth）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "设计 · daily / aiweb / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/wesroth-934330",
+      "updatedAt": 1795742594602,
+      "refs": [
+        {
+          "title": "An anime music video with timed lyrics · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261127-20-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "An anime music video with timed lyrics · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-20-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "An anime music video with timed lyrics · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-20-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "An anime music video with timed lyrics · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261127-20-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
     {
       "id": "dy-20261126-1",
       "key": "DY-1",
