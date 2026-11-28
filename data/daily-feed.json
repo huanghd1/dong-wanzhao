@@ -5,8 +5,8 @@
   "aiQuota": 10,
   "designQuota": 5,
   "maxImagesPerWork": 6,
-  "lastUpdatedAt": "2026-11-27T09:25:29+08:00",
-  "lastRunSummary": "2026-11-27 自动新增 15 部（AI 精选 10 部 + 建筑/工业/美术/渲染/商品3D展板 5 部），共 42 张图并自动归类",
+  "lastUpdatedAt": "2026-11-28T09:52:40+08:00",
+  "lastRunSummary": "2026-11-28 自动新增 15 部（AI 精选 10 部 + 建筑/工业/美术/渲染/商品3D展板 5 部），共 42 张图并自动归类",
   "categories": [
     "design",
     "game",
@@ -15,6 +15,984 @@
     "app"
   ],
   "items": [
+    {
+      "id": "dy-20261128-21",
+      "key": "DY-21",
+      "type": "daily",
+      "category": "architecture",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "S House / BOV ESTUDIO / BOV ESTUDIO",
+      "domain": "每日精选 / 建筑 · ArchDaily",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "建筑",
+        "ArchDaily",
+        "国际建筑"
+      ],
+      "essence": "In Ayllón (Segovia), adjacent to the historic center, the openings of a 1910 facade now look out onto a courtyard. The facade originally belonged to a family home that was divided into two dwellings i",
+      "dna": [
+        [
+          "来源渠道",
+          "ArchDaily"
+        ],
+        [
+          "作者 / 机构",
+          "ArchDaily Featured"
+        ],
+        [
+          "自动归属",
+          "建筑（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "ArchDaily Editorial Pick"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：ArchDaily）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://www.archdaily.com/1189382/s-house-bov-estudio-bov-estudio",
+      "updatedAt": 1795830750460,
+      "refs": [
+        {
+          "title": "S House / BOV ESTUDIO / BOV ESTUDIO · 主视觉预览",
+          "tag": "实景精选",
+          "src": "./assets/refs/daily-20261128-21-1.jpg",
+          "caption": "In Ayllón (Segovia), adjacent to the historic center, the openings of a 1910 facade now look out onto a courtyard. The facade originally bel"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-22",
+      "key": "DY-22",
+      "type": "daily",
+      "category": "industrial",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Centurion Heavy Assault Mech",
+      "domain": "每日精选 / 工业设计 · Sketchfab Industrial",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "工业设计",
+        "Sketchfab Industrial",
+        "145 Likes"
+      ],
+      "essence": "Big, chonky mech, with multiple weapons.",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab Industrial"
+        ],
+        [
+          "作者 / 机构",
+          "Lagst"
+        ],
+        [
+          "自动归属",
+          "工业设计（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "145 Likes / 4208 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab Industrial）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-f5536df4400d408096973799d200f797",
+      "updatedAt": 1795830749460,
+      "refs": [
+        {
+          "title": "Centurion Heavy Assault Mech · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261128-22-1.jpg",
+          "caption": "Big, chonky mech, with multiple weapons."
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-23",
+      "key": "DY-23",
+      "type": "daily",
+      "category": "art",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "The Eternal - Stylized Animated model",
+      "domain": "每日精选 / 美术 · Sketchfab Fine Art",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "美术",
+        "Sketchfab Fine Art",
+        "125 Likes"
+      ],
+      "essence": "Based on the original artwork of Léa Chevret, modeling and animation with Blender, texture with Substance Painter",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab Fine Art"
+        ],
+        [
+          "作者 / 机构",
+          "Meleagors"
+        ],
+        [
+          "自动归属",
+          "美术（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "125 Likes / 1549 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab Fine Art）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-0e1cf5d115fe49eda318ffe0b2602c56",
+      "updatedAt": 1795830748460,
+      "refs": [
+        {
+          "title": "The Eternal - Stylized Animated model · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261128-23-1.jpg",
+          "caption": "Based on the original artwork of Léa Chevret, modeling and animation with Blender, texture with Substance Painter"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-24",
+      "key": "DY-24",
+      "type": "daily",
+      "category": "render",
+      "routedViews": [
+        "daily",
+        "awards"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Vintage Radio",
+      "domain": "每日精选 / 3D 渲染 · Sketchfab Staff Pick",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "3D 渲染",
+        "Sketchfab Staff Pick",
+        "7 Likes"
+      ],
+      "essence": "Game-ready 3D asset created for real-time applications. Modeled in Blender, baked in Marmoset Toolbag 5 and textured in Substance 3D Painter. The final render was created in Marmoset Toolbag",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab Staff Pick"
+        ],
+        [
+          "作者 / 机构",
+          "mrachniyvoran"
+        ],
+        [
+          "自动归属",
+          "3D 渲染（自动同步至 daily / awards）"
+        ],
+        [
+          "社区热度",
+          "7 Likes / 163 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab Staff Pick）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-79e7d828f9de46d5869b5d7e1c4b0687",
+      "updatedAt": 1795830747460,
+      "refs": [
+        {
+          "title": "Vintage Radio · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261128-24-1.jpg",
+          "caption": "Game-ready 3D asset created for real-time applications. Modeled in Blender, baked in Marmoset Toolbag 5 and textured in Substance 3D Painter"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-25",
+      "key": "DY-25",
+      "type": "daily",
+      "category": "product3d",
+      "routedViews": [
+        "daily",
+        "product3d"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Corded Milling Machine FREE",
+      "domain": "每日精选 / 商品 3D 展板 · Sketchfab 3D · 工业机床",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "商品 3D 展板",
+        "Sketchfab 3D",
+        "48 Likes"
+      ],
+      "essence": "Introducing the Corded Milling Machine remade by LordSamueliSolo, the programs used to make this object are as follows: Blender 3.0.1 & G.I.M.P 2.10.28…The ‘Textures’ inclued in this object ",
+      "dna": [
+        [
+          "来源渠道",
+          "Sketchfab 3D · 工业机床"
+        ],
+        [
+          "作者 / 机构",
+          "Lady Lion Studios"
+        ],
+        [
+          "自动归属",
+          "商品 3D 展板（自动同步至 daily / product3d）"
+        ],
+        [
+          "社区热度",
+          "48 Likes / 3567 Views"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Sketchfab 3D · 工业机床）。",
+        "点击底部「打开来源 ↗」可查看高清原站或 360° 交互检视 3D 模型。"
+      ],
+      "notesLabel": "自动采集说明",
+      "sourceUrl": "https://sketchfab.com/3d-models/none-f5236fcf79ac40869f6f4bccb9155ef5",
+      "updatedAt": 1795830746460,
+      "refs": [
+        {
+          "title": "Corded Milling Machine FREE · 主视觉预览",
+          "tag": "3D 展板",
+          "src": "./assets/refs/daily-20261128-25-1.jpg",
+          "caption": "Introducing the Corded Milling Machine remade by LordSamueliSolo, the programs used to make this object are as follows: Blender 3.0.1 & G.I."
+        }
+      ],
+      "subKind": "cnc"
+    },
+    {
+      "id": "dy-20261128-26",
+      "key": "DY-26",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Lip-synced speech timed frame by frame",
+      "domain": "每日精选 / 设计 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@higgsfield_ai）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "设计 · daily / aiweb / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/higgsfield-ai-580024",
+      "updatedAt": 1795830750460,
+      "refs": [
+        {
+          "title": "Lip-synced speech timed frame by frame · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261128-26-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Lip-synced speech timed frame by frame · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-26-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Lip-synced speech timed frame by frame · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-26-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Lip-synced speech timed frame by frame · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-26-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-27",
+      "key": "DY-27",
+      "type": "daily",
+      "category": "game",
+      "modelFamily": "other",
+      "modelName": "DeepSeek V4.1 Flash · GLM-5.3",
+      "routedViews": [
+        "daily",
+        "games",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Hot Air Balloon Rides Website",
+      "domain": "每日精选 / 游戏 · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "游戏",
+        "DeepSeek V4.1 Flash · GLM-5.3",
+        "VibeFather"
+      ],
+      "essence": "A dawn-soft balloon ride site with a flight timeline, packages, gift vouchers, and a saved booking request.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "DeepSeek V4.1 Flash · GLM-5.3（其他模型）"
+        ],
+        [
+          "自动归属",
+          "游戏 · daily / games / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/hot-air-balloon-rides-website",
+      "updatedAt": 1795830749460,
+      "refs": [
+        {
+          "title": "Hot Air Balloon Rides Website · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261128-27-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Hot Air Balloon Rides Website · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-27-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Hot Air Balloon Rides Website · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-27-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Hot Air Balloon Rides Website · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-27-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-28",
+      "key": "DY-28",
+      "type": "daily",
+      "category": "web",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Why the sky is blue, explained in Japanese",
+      "domain": "每日精选 / 网页 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "网页",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@yzr_koba）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "网页 · daily / aiweb / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/yzr-koba-722932",
+      "updatedAt": 1795830748460,
+      "refs": [
+        {
+          "title": "Why the sky is blue, explained in Japanese · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261128-28-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Why the sky is blue, explained in Japanese · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-28-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Why the sky is blue, explained in Japanese · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-28-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Why the sky is blue, explained in Japanese · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-28-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-29",
+      "key": "DY-29",
+      "type": "daily",
+      "category": "app",
+      "modelFamily": "other",
+      "modelName": "DeepSeek V4.1 Flash · GLM-5.3",
+      "routedViews": [
+        "daily",
+        "products",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Wedding Invitation and RSVP Website",
+      "domain": "每日精选 / App · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "App",
+        "DeepSeek V4.1 Flash · GLM-5.3",
+        "VibeFather"
+      ],
+      "essence": "Single-page wedding invite with a live countdown, story timeline, day schedule, guest logistics and a client-side RSVP.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "DeepSeek V4.1 Flash · GLM-5.3（其他模型）"
+        ],
+        [
+          "自动归属",
+          "App · daily / products / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/wedding-invitation-and-rsvp-website",
+      "updatedAt": 1795830747460,
+      "refs": [
+        {
+          "title": "Wedding Invitation and RSVP Website · 首屏主视觉",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-29-1.jpg",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Wedding Invitation and RSVP Website · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-29-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Wedding Invitation and RSVP Website · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-29-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Wedding Invitation and RSVP Website · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-29-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-30",
+      "key": "DY-30",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "other",
+      "modelName": "DeepSeek V4.1 Flash · GLM-5.3",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Space Tech Startup Website",
+      "domain": "每日精选 / 设计 · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "DeepSeek V4.1 Flash · GLM-5.3",
+        "VibeFather"
+      ],
+      "essence": "Deep-space startup site with an animated orbit diagram, ticking telemetry and a launch manifest rail.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "DeepSeek V4.1 Flash · GLM-5.3（其他模型）"
+        ],
+        [
+          "自动归属",
+          "设计 · daily / aiweb / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/space-tech-startup-website",
+      "updatedAt": 1795830746460,
+      "refs": [
+        {
+          "title": "Space Tech Startup Website · 首屏主视觉",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-30-1.jpg",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Space Tech Startup Website · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-30-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Space Tech Startup Website · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-30-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Space Tech Startup Website · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-30-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-31",
+      "key": "DY-31",
+      "type": "daily",
+      "category": "game",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "games",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "A toy-room adventure game",
+      "domain": "每日精选 / 游戏 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "游戏",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@itssotsot）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "游戏 · daily / games / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/itssotsot-491720",
+      "updatedAt": 1795830745460,
+      "refs": [
+        {
+          "title": "A toy-room adventure game · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261128-31-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "A toy-room adventure game · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-31-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "A toy-room adventure game · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-31-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "A toy-room adventure game · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-31-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-32",
+      "key": "DY-32",
+      "type": "daily",
+      "category": "web",
+      "modelFamily": "other",
+      "modelName": "GLM-5.4 · DeepSeek V4.1 Flash · GLM-5.3",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Industrial Robotics Company Website",
+      "domain": "每日精选 / 网页 · VibeFather",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "网页",
+        "GLM-5.4 · DeepSeek V4.1 Flash · GLM-5.3",
+        "VibeFather"
+      ],
+      "essence": "A steel-and-safety-orange robotics site with spec tables, industry proof and a live local ROI calculator.",
+      "dna": [
+        [
+          "来源渠道",
+          "VibeFather"
+        ],
+        [
+          "模型家族",
+          "GLM-5.4 · DeepSeek V4.1 Flash · GLM-5.3（其他模型）"
+        ],
+        [
+          "自动归属",
+          "网页 · daily / aiweb / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：VibeFather），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://vibefather.ai/templates/industrial-robotics-company-website",
+      "updatedAt": 1795830744460,
+      "refs": [
+        {
+          "title": "Industrial Robotics Company Website · 首屏主视觉",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-32-1.jpg",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Industrial Robotics Company Website · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-32-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Industrial Robotics Company Website · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-32-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Industrial Robotics Company Website · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-32-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-33",
+      "key": "DY-33",
+      "type": "daily",
+      "category": "product",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "products",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "Fable 5.2 animates its own announcement",
+      "domain": "每日精选 / 产品 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "产品",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@grafikcem）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "产品 · daily / products / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/grafikcem-937806",
+      "updatedAt": 1795830743460,
+      "refs": [
+        {
+          "title": "Fable 5.2 animates its own announcement · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261128-33-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "Fable 5.2 animates its own announcement · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-33-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "Fable 5.2 animates its own announcement · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-33-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "Fable 5.2 animates its own announcement · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-33-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-34",
+      "key": "DY-34",
+      "type": "daily",
+      "category": "app",
+      "modelFamily": "other",
+      "modelName": "Multi-Model AI",
+      "routedViews": [
+        "daily",
+        "products",
+        "othermodel"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "HKUDS/CLI-Anything",
+      "domain": "每日精选 / App · GitHub Trending",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "App",
+        "Multi-Model AI",
+        "GitHub Trending"
+      ],
+      "essence": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "dna": [
+        [
+          "来源渠道",
+          "GitHub Trending"
+        ],
+        [
+          "模型家族",
+          "Multi-Model AI（其他模型）"
+        ],
+        [
+          "自动归属",
+          "App · daily / products / othermodel"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：GitHub Trending），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://github.com/HKUDS/CLI-Anything",
+      "updatedAt": 1795830742460,
+      "refs": [
+        {
+          "title": "HKUDS/CLI-Anything · 主视觉预览",
+          "tag": "实机预览",
+          "src": "./assets/refs/daily-20261128-34-1.jpg",
+          "caption": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/"
+        }
+      ]
+    },
+    {
+      "id": "dy-20261128-35",
+      "key": "DY-35",
+      "type": "daily",
+      "category": "design",
+      "modelFamily": "claude",
+      "modelName": "Claude Fable 5.2",
+      "routedViews": [
+        "daily",
+        "aiweb",
+        "fable"
+      ],
+      "discoveredDate": "2026-11-28",
+      "title": "A formant synthesizer that makes code talk",
+      "domain": "每日精选 / 设计 · Fable5.2-Showcase",
+      "status": "backlog",
+      "priority": 2,
+      "starred": false,
+      "labels": [
+        "设计",
+        "Claude Fable 5.2",
+        "Fable5.2-Showcase"
+      ],
+      "essence": "Claude Fable 5.2 社区高赞实机作品（@higgsfield_ai）。",
+      "dna": [
+        [
+          "来源渠道",
+          "Fable5.2-Showcase"
+        ],
+        [
+          "模型家族",
+          "Claude Fable 5.2（Claude 系列）"
+        ],
+        [
+          "自动归属",
+          "设计 · daily / aiweb / fable"
+        ]
+      ],
+      "notes": [
+        "GitHub Actions 每日 09:00 自动采集入库（来源：Fable5.2-Showcase），点击底部「打开来源 ↗」可体验原站。",
+        "复刻时请重点拆解其布局节奏、信息密度与动效反馈，避免生搬装饰元素。"
+      ],
+      "notesLabel": "自动化采集备注",
+      "sourceUrl": "https://skillry.dev/ai-videos/fable5-2/higgsfield-ai-957629",
+      "updatedAt": 1795830741460,
+      "refs": [
+        {
+          "title": "A formant synthesizer that makes code talk · 动态实机录屏",
+          "tag": "动态录屏",
+          "src": "./assets/refs/daily-20261128-35-1.webp",
+          "caption": "完整首屏构图与核心交互表现。"
+        },
+        {
+          "title": "A formant synthesizer that makes code talk · 核心界面层次",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-35-2.jpg",
+          "caption": "主内容区排印、色彩对比与组件结构。"
+        },
+        {
+          "title": "A formant synthesizer that makes code talk · 交互细节态",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-35-3.jpg",
+          "caption": "交互切换、栅格节奏与动效过渡。"
+        },
+        {
+          "title": "A formant synthesizer that makes code talk · 收口结构与闭环",
+          "tag": "实机截帧",
+          "src": "./assets/refs/daily-20261128-35-4.jpg",
+          "caption": "底部收尾、CTA 或完整玩法闭环。"
+        }
+      ]
+    },
     {
       "id": "dy-20261127-6",
       "key": "DY-6",
